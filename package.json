@@ -1,0 +1,19 @@
+{
+  "name": "jobshop",
+  "version": "1.0.0",
+  "description": "creating jobshop on MERN stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seanwongdev/MERN-Jobshop.git"
+  },
+  "author": "sean",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seanwongdev/MERN-Jobshop/issues"
+  },
+  "homepage": "https://github.com/seanwongdev/MERN-Jobshop#readme"
+}
