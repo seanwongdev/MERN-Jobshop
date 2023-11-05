@@ -1,4 +1,6 @@
 const Job = require('../models/jobModel')
+const catchAsync = require('../utils/catchAsync')
+const AppError = require('../utils/appError')
 
 
 exports.getAllJobs = async (req, res) => {
@@ -10,13 +12,13 @@ exports.getAllJobs = async (req, res) => {
   })
 }
 
-exports.createJob = async (req, res) => {
-  const newJob = await Job.create(req.body)
-  res.status(201).json({
+exports.createJob = catchAsync (async (req, res) => {
+    const newJob = await Job.create(req.body)
+    res.status(201).json({
     status: 'success',
     data: { job: newJob }
-  })
-}
+  });
+});
 
 exports.getJob = async (req, res) => {
   const {id} = req.params

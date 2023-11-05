@@ -18,7 +18,7 @@ const jobSchema = new mongoose.Schema(
       required: [true, 'Please indicate what type of role this is'],
       default: "Full-time",
       enum: {
-        values: ['Full-time', 'Part-time', 'Contract','Internship'],
+        values: ['Full-time', 'part-time', 'contract','internship'],
         message: 'Job type is either: full-time, part-time, contract or internship',
       },
     },
@@ -27,16 +27,16 @@ const jobSchema = new mongoose.Schema(
       default: "Application",
       enum: {
         values: ['Application', 'Interview', 'Offer','Rejected'],
-        message: 'Kindly choose between: application, interview, offer and rejected',
+        message: 'Kindly choose between: Application, Interview, Offer and Rejected',
       }
     },
     address: {
       type: String,
       trim: true
     },
-    createdAt:
-    { type: Date,
-    default: Date.now()
+    createdAt:{
+      type: Date,
+      default: Date.now()
     }
   }
 )
