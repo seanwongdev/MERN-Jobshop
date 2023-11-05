@@ -3,7 +3,7 @@ const {getMonthlyStats, getAllJobs, createJob, getJob, patchJob, deleteJob } = r
 
 const router = express.Router();
 
-router.route('/monthly-stats/:month').get(getMonthlyStats);
+router.route('/monthly-stats').get(getMonthlyStats);
 
 router.route('/').get(getAllJobs).post(createJob);
 

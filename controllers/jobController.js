@@ -12,7 +12,7 @@ exports.getAllJobs = async (req, res) => {
   })
 }
 
-exports.createJob = catchAsync (async (req, res) => {
+exports.createJob = catchAsync (async (req, res, next) => {
     const newJob = await Job.create(req.body)
     res.status(201).json({
     status: 'success',
@@ -55,7 +55,14 @@ exports.deleteJob = async (req, res) => {
 exports.getMonthlyStats = async (req,res) => {
   const stats =  await Job.aggregate([
     {
-
+      $group: {
+        _id: { $month: '$createdAt' },
+        numTourStarts: { $sum: 1 },
+      },
     }
   ])
+  res.status(200).json({
+    status: 'success',
+    data: { stats },
+  });
 }
