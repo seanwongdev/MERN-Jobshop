@@ -16,9 +16,9 @@ const jobSchema = new mongoose.Schema(
     type: {
       type: String,
       required: [true, 'Please indicate what type of role this is'],
-      default: "Full-time",
+      default: "full-time",
       enum: {
-        values: ['Full-time', 'part-time', 'contract','internship'],
+        values: ['full-time', 'part-time', 'contract','internship'],
         message: 'Job type is either: full-time, part-time, contract or internship',
       },
     },
@@ -38,14 +38,13 @@ const jobSchema = new mongoose.Schema(
       type: Date,
       default: Date.now()
     },
-    users: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User',
-      }
-    ]
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
+      required: [true, 'Job must have a user']
+    },
   }
-)
+);
 
 
 const Job = mongoose.model('Job', jobSchema);

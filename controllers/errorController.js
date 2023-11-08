@@ -4,9 +4,17 @@ const handleJsonWebError = () => new AppError('Invalid token. Please log in agai
 
 const handleTokenExpiredError = () => new AppError('Your token has expired! Please log in again', 401);
 
+const handleValidationError = (err) => {
+  const errors = Object.values(err.errors).map((el) => el.message);
+
+  const message = `Invalid input data. ${errors.join('. ')}`;
+  return new AppError(message, 400);
+}
+
+
 const sendError = (err, res) => {
   // Operational, trusted error: sending message to client
-  if (err.isOperational) {
+  // if (err.isOperational) {
     res.status(err.statusCode).json({
       status: err.status,
       error: err,
@@ -15,15 +23,15 @@ const sendError = (err, res) => {
     });
 
     // Programming or other unknown error: don't leak error details
-  } else {
-    // 1) Log Error
-    console.error('Error', err);
+  // } else {
+  //   // 1) Log Error
+  //   console.error('Error', err);
 
-    // 2) send generic message
-    res
-      .status(500)
-      .json({ status: 'error', message: 'Something went very wrong!' });
-  }
+  //   // 2) send generic message
+  //   res
+  //     .status(500)
+  //     .json({ status: 'error', message: 'Something went very wrong!' });
+  // }
 };
 
 
@@ -34,7 +42,7 @@ module.exports = (err, req, res, next) => {
   let error = Object.create(err);
   // if (error.name === 'CastError') error = handleCastErrorDB(error);
   // if (error.code === 11000) error = handleDuplicateFieldsDB(error);
-  // if (error.name === 'ValidationError') error = handleValidationError(error);
+  if (error.name === 'ValidationError') error = handleValidationError(error);
   if (error.name === 'JsonWebTokenError') error = handleJsonWebError();
   if (error.name === 'TokenExpiredError') error = handleTokenExpiredError();
   sendError(error, res);
