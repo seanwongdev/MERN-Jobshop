@@ -19,7 +19,7 @@ exports.createUser = async (req, res) => {
 
 exports.getUser = async (req, res) => {
   const { id } = req.params;
-  const user = await User.findById(id);
+  const user = await User.findById(id).populate('jobs');
   res.status(200).json({
     status: 'success',
     data: { user },

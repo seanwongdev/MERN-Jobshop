@@ -22,7 +22,9 @@ exports.createJob = catchAsync (async (req, res, next) => {
 
 exports.getJob = async (req, res) => {
   const {id} = req.params
-  const job = await Job.findById(id)
+  const job = await Job.findById(id).populate({
+    path: 'user',
+    select: "-__v"});
   res.status(200).json({
     status: 'success',
     data: { job }

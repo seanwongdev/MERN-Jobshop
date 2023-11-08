@@ -52,6 +52,10 @@ const userSchema = new mongoose.Schema(
     passwordChangedAt: Date
 
   },
+  {
+    toJSON: {virtuals: true},
+    toObject: {virtuals: true}
+  },
 );
 
 userSchema.pre('save', async function (next) {
@@ -82,6 +86,12 @@ userSchema.methods.changedPasswordAfter = function(JWTTimeStamp) {
 
   return false;
 };
+
+userSchema.virtual('jobs', {
+  ref: "Job",
+  foreignField: 'user',
+  localField: '_id'
+})
 
 const User = mongoose.model('User', userSchema);
 
