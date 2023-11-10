@@ -1,30 +1,43 @@
 import { useState } from 'react'
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import Job, { loader as jobLoader} from './features/Job';
+import AppLayout from './features/AppLayout';
+import Dashboard from './features/Dashboard';
+import Home from './features/Home';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <Home/>,
   },
   {
-    path: "/menu",
-    element: <Menu />,
+    path: "/dashboard",
+    element: <Dashboard />,
   },
   {
-    path: "/cart",
-    element: <Cart />,
-  },
-  {
-    path: "/order/new",
-    element: <CreateOrder />,
-  },
-  { path: "/order/:orderId", element: <Order /> },
+    element: <AppLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/menu",
+        element: <Menu />,
+      },
+      {
+        path: "/jobs/new",
+        element: <CreateJob />,
+      },
+      { path: "/jobs/:jobId",
+      element: <Job />,
+      loader: jobLoader,
 
+      },
+    ]
+  }
 ])
 
 function App() {
-  return <RouterProvier router={router} />;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
