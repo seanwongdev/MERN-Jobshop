@@ -7,7 +7,7 @@ function AppLayout() {
 
   return (
     <div >
-      {isLoading && <Loader />}
+      {/* {isLoading && <Loader />} */}
 
       <Header />
 
@@ -17,7 +17,7 @@ function AppLayout() {
         </main>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

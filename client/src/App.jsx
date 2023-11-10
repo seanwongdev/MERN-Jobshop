@@ -9,31 +9,14 @@ import Home from './features/Home';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>,
+    element: <Home />
   },
   {
     path: "/dashboard",
     element: <Dashboard />,
-  },
-  {
-    element: <AppLayout />,
-    errorElement: <Error />,
-    children: [
-      {
-        path: "/menu",
-        element: <Menu />,
-      },
-      {
-        path: "/jobs/new",
-        element: <CreateJob />,
-      },
-      { path: "/jobs/:jobId",
-      element: <Job />,
-      loader: jobLoader,
 
-      },
-    ]
   }
+
 ])
 
 function App() {
