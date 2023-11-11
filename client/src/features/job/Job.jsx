@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom"
-import { getAllJobs } from "../services/apiJob";
+import { getAllJobs } from "../../services/apiJob";
 
 function Job() {
   const job = useLoaderData();
