@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom"
 
-function SideNavBar() {
+function BigNavBar() {
   return (
     <div>
-      <h1>
       <Link to="/">JobShop</Link>
-        Sidebar
-        </h1>
+      BigNavBar Check
     </div>
   )
 }
 
-export default SideNavBar
+export default BigNavBar
