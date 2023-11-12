@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Profiler, useState } from 'react'
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import Job, { loader as jobLoader} from './features/job/Job';
 
@@ -7,6 +7,8 @@ import JobList from './features/job/JobList';
 import Login from './features/user/Login';
 import CreateJob from './features/job/CreateJob';
 import DashboardLayout from './ui/DashboardLayout';
+import Stats from './features/stats/Stats';
+import Profile from "./features/profile/Profile"
 
 
 const router = createBrowserRouter([
@@ -29,13 +31,17 @@ const router = createBrowserRouter([
       {
         path: "jobs",
         element: <JobList />
+      },
+      {
+        path: "stats",
+        element: <Stats />
+      },
+      {
+        path: "profile",
+        element: <Profile />
       }
     ]
-
   },
-
-
-
 ])
 
 function App() {
