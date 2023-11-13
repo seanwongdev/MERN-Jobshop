@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom"
 
-function LinkButton({children, to}) {
+function LinkButton({children, to, onClick}) {
   const className = ""
 
+
+
   return (
-    <Link to={to}>
+    <Link to={to} onClick={onClick}>
       {children}
     </Link>
   )
