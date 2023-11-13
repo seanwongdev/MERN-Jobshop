@@ -2,10 +2,10 @@
 import Dark from "./Dark"
 import SideToolBar from "./SideToolBar"
 
-function Header({onClick}) {
+function Header() {
   return (
     <div className="flex justify-between">
-      <SideToolBar onClick={} />
+      <SideToolBar  />
 
       <h1>Dashboard</h1>
 
