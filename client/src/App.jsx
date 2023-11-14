@@ -9,6 +9,7 @@ import CreateJob from './features/job/CreateJob';
 import DashboardLayout from './ui/DashboardLayout';
 import Stats from './features/stats/Stats';
 import Profile from "./features/profile/Profile"
+import Signup from './features/user/Signup';
 
 
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />
+  },
+  {
+    path: "/signup",
+    element: <Signup />
   },
   {
     path: "/dashboard",
