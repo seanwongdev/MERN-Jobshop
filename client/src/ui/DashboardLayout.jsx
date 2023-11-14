@@ -23,7 +23,7 @@ function DashboardLayout() {
           <div className="md:hidden">
             {showSidebar && <SmallNavBar />}
           </div>
-          <div className="hidden md:grid">
+          <div className={showSidebar ? "hidden md:grid ml-[0px] transition-transform duration-300 ease-in-out" : "hidden md:grid ml-[-250px] transition-transform duration-300 ease-in-out" }  >
             <BigNavBar />
           </div>
         </div>
