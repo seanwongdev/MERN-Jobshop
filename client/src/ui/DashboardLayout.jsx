@@ -17,12 +17,15 @@ function DashboardLayout() {
   return (
     <DashboardContext.Provider value={{handleToggleSidebar, showSidebar}}>
 
-      <div className="md:grid md:grid-cols-[1fr,13fr] md:gap-8 me-4">
-        <div className="md:hidden">
-        {showSidebar && <SmallNavBar />}
-        </div>
-        <div className="hidden md:grid">
-          <BigNavBar />
+      <div className="md:grid md:grid-cols-[auto,1fr] md:gap-8 px-8 w-screen md:px-5 ">
+        <div>
+
+          <div className="md:hidden">
+            {showSidebar && <SmallNavBar />}
+          </div>
+          <div className="hidden md:grid">
+            <BigNavBar />
+          </div>
         </div>
         <div className="">
 
