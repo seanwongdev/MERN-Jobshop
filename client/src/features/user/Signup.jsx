@@ -1,4 +1,4 @@
-import { Form, useActionData } from "react-router-dom"
+import { Form, redirect, useActionData } from "react-router-dom"
 import { faCubesStacked } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
@@ -93,11 +93,13 @@ export async function action({ request }) {
       },
       body: JSON.stringify(data)
     })
+    console.log(res)
+
     const output = await res.json();
     console.log(output)
-
+    return redirect('/login')
   } catch (err) {
-    console.log(err)
+    console.log(err.message)
     return err;
   }
 
