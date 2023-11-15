@@ -69,7 +69,7 @@ function Signup() {
             <input
               type="password"
               className="input"
-              name="confirmPassword"
+              name="passwordConfirm"
               required
               />
           </div>
