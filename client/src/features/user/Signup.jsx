@@ -94,9 +94,12 @@ export async function action({ request }) {
       body: JSON.stringify(data)
     })
     console.log(res)
-
     const output = await res.json();
-    console.log(output)
+    if (output.error) {
+      alert(output.message);
+      return null;
+    }
+    alert('Registered Successfully')
     return redirect('/login')
   } catch (err) {
     console.log(err.message)
