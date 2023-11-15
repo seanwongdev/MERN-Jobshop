@@ -1,6 +1,10 @@
-function Button({children, onClick}) {
+function Button({children, onClick, type}) {
+  const styles = {
+
+  }
+
   return (
-    <button onClick={onClick}>
+    <button onClick={onClick} className={styles[type]}>
       {children}
     </button>
   )

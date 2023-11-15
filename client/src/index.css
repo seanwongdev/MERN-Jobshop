@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .input {
+    @apply w-full rounded-md border bg-blue-50 border-gray-500 px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-400  md:px-6 md:py-3;
+  }
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
