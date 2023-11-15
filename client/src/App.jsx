@@ -1,6 +1,7 @@
 import { Profiler, useState } from 'react'
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import Job, { loader as jobLoader} from './features/job/Job';
+import { action as signUpAction } from './features/user/Signup';
 
 import Home from './ui/Home';
 import JobList from './features/job/JobList';
@@ -23,7 +24,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: <Signup />
+    element: <Signup />,
+    action: signUpAction
   },
   {
     path: "/dashboard",
