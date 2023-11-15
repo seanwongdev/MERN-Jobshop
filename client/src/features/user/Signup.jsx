@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import Button from "../../ui/Button";
 
-const isValidEmail = (str) => /^[a-zA-Z0-9. _-]+@[a-zA-Z0-9. -]+\. [a-zA-Z]{2,4}$/.test(str);
+// const isValidEmail = (str) => /^[a-zA-Z0-9. _-]+@[a-zA-Z0-9. -]+\. [a-zA-Z]{2,4}$/.test(str);
 
 function Signup() {
   const formErrors = useActionData()
