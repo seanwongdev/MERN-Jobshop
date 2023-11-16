@@ -1,13 +1,16 @@
-import { Form, redirect, useActionData } from "react-router-dom"
+import { Form, redirect, useActionData, useNavigation } from "react-router-dom"
 import { faCubesStacked } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import Button from "../../ui/Button";
+import { toast } from "react-toastify";
 
 // const isValidEmail = (str) => /^[a-zA-Z0-9. _-]+@[a-zA-Z0-9. -]+\. [a-zA-Z]{2,4}$/.test(str);
 
 function Login() {
   const formErrors = useActionData()
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting"
 
   return (
     <div className="flex justify-center items-center w-screen h-screen">
@@ -45,8 +48,7 @@ function Login() {
 
           </div>
 
-
-          <Button>Submit</Button>
+          <Button disabled={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Submit'}</Button>
         </Form>
       </div>
     </div>
@@ -72,7 +74,7 @@ export async function action({ request }) {
       alert(output.message);
       return null;
     }
-    alert('Logged In Successfully')
+    toast.success('Logged In Successfully')
     return redirect('/dashboard')
   } catch (err) {
     console.log(err.message)

@@ -1,4 +1,4 @@
-import { Form, redirect, useActionData } from "react-router-dom"
+import { Form, redirect, useActionData, useNavigation } from "react-router-dom"
 import { faCubesStacked } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { toast } from 'react-toastify';
@@ -9,6 +9,8 @@ import Button from "../../ui/Button";
 
 function Signup() {
   const formErrors = useActionData()
+  const navigation = useNavigation()
+  const isSubmitting = navigation.state === "submitting"
 
   return (
     <div className="flex justify-center items-center w-screen h-screen">
@@ -74,7 +76,7 @@ function Signup() {
               required
               />
           </div>
-          <Button>Submit</Button>
+          <Button disabled={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Submit'}</Button>
         </Form>
       </div>
     </div>
