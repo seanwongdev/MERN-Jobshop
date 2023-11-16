@@ -20,7 +20,8 @@ exports.signup = catchAsync(async (req, res, next) => {
     role: req.body.role
   });
 
-  const token = signToken(newUser._id)
+  const token = signToken(newUser._id);
+
 
   res.status(201).json({
     status: 'success',
@@ -48,6 +49,18 @@ exports.login = catchAsync(async (req, res, next) => {
 
   // 3) if everything ok, send token to client
   const token = signToken(user._id);
+
+  const cookieOptions = {
+    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 3600 * 1000),
+    // secure: true, // cookie will only be sent in encrypted connection https
+    httpOnly: true, // cookie cannot be accessed or modified by browser
+  };
+
+  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+  res.cookie('jwt', token, cookieOptions);
+
+  user.password = undefined
+
   res.status(200).json({
     status: 'success',
     token,
