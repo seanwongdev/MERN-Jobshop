@@ -1,6 +1,7 @@
 import { Form, redirect, useActionData } from "react-router-dom"
 import { faCubesStacked } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { toast } from 'react-toastify';
 
 import Button from "../../ui/Button";
 
@@ -99,10 +100,10 @@ export async function action({ request }) {
       alert(output.message);
       return null;
     }
-    alert('Registered Successfully')
+    toast.success('Registration successful')
     return redirect('/login')
   } catch (err) {
-    console.log(err.message)
+    toast.error(err?.response?.data?.msg)
     return err;
   }
 
