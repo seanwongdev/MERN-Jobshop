@@ -35,7 +35,7 @@ function DashboardLayout() {
     const data = res.json();
     console.log(data)
     toast.success('Successfully logged out')
-}
+  }
 
   return (
     <DashboardContext.Provider value={{handleToggleSidebar, showSidebar, logoutUser}}>
