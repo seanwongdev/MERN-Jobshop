@@ -5,8 +5,19 @@ import Header from "./Header"
 import SmallNavBar from "./SmallNavBar"
 import BigNavBar from "./BigNavBar"
 import { createContext, useContext, useState } from "react"
+import { loader } from "../features/job/Job"
 
 const DashboardContext = createContext()
+
+export const loader = async function() {
+try {
+  const res = await fetch("/api/v1/users/current-user")
+  const data = await res.json();
+  console.log(data)
+} catch (error) {
+
+}
+}
 
 function DashboardLayout() {
   const [showSidebar,setShowSidebar] = useState(true);
