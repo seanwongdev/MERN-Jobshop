@@ -10,8 +10,8 @@ function Header({user}) {
       <h1>Dashboard</h1>
 
       <div>
-      <p>{user}</p>
-      <Dark />
+        <p>{user.firstName}</p>
+        <Dark />
       </div>
     </div>
   )

@@ -12,7 +12,7 @@ const DashboardContext = createContext()
 export const loader = async function() {
   try {
     const res = await fetch("/api/v1/users/current-user")
-    const data = await res.json();
+    const {data} = await res.json();
     return data
   } catch (error) {
     return redirect('/')
@@ -20,7 +20,7 @@ export const loader = async function() {
 }
 
 function DashboardLayout() {
-  const { firstName } = useLoaderData()
+  const {user} = useLoaderData()
 
   const [showSidebar,setShowSidebar] = useState(true);
   const handleToggleSidebar = () => {
@@ -42,7 +42,7 @@ function DashboardLayout() {
         </div>
         <div className="">
 
-          <Header />
+          <Header  user={user}/>
           <Outlet />
         </div>
 
