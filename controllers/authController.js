@@ -59,7 +59,8 @@ exports.login = catchAsync(async (req, res, next) => {
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
   res.cookie('jwt', token, cookieOptions);
 
-  user.password = undefined
+  user.password = undefined;
+
 
   res.status(200).json({
     status: 'success',
@@ -69,11 +70,14 @@ exports.login = catchAsync(async (req, res, next) => {
 
 exports.protect = catchAsync(async (req, res, next) => {
   // 1) getting token and check if it exists
-  let token;
-  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-    token = req.headers.authorization.split(' ')[1]
-  }
 
+  // if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+  //   token = req.headers.authorization.split(' ')[1]
+  // }
+  let token;
+  if (req.cookies) {
+    token = req.cookies.jwt;
+  }
 
   if (!token) {
     return next(new AppError('You are not logged in! Please log in to get access.', 401))
@@ -91,6 +95,8 @@ exports.protect = catchAsync(async (req, res, next) => {
   if (currentUser.changedPasswordAfter(decoded.iat)) {
     return next(new AppError('User recently changed password! Please log in again', 401))
   }
+
+  console.log(currentUser)
 
   // 5) grant access to protected route
   req.user = currentUser;

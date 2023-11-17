@@ -26,6 +26,14 @@ exports.getUser = async (req, res) => {
   });
 };
 
+exports.getCurrentUser = async (req, res) => {
+  const user = await User.findOne({ _id: req.user.id });
+  res.status(200).json({
+    status: 'success',
+    data: { user },
+  });
+};
+
 exports.updateUser = async (req, res) => {
   const { id } = req.params;
   const user = await User.findByIdAndUpdate(id);

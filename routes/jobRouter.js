@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.route('/monthly-stats').get(getMonthlyStats);
 
-router.route('/').get(authController.protect, getAllJobs).post(createJob);
+router.route('/').get(getAllJobs).post(createJob);
 
-router.route('/:id').get(getJob).patch(patchJob).delete(authController.protect, authController.restrictTo('admin'), deleteJob);
+router.route('/:id').get(getJob).patch(patchJob).delete(authController.restrictTo('admin'), deleteJob);
 
 module.exports = router
