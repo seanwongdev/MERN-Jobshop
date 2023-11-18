@@ -5,7 +5,7 @@ import Dark from "./Dark"
 import { useDashboardContext } from "./DashboardLayout"
 import SideToolBar from "./SideToolBar"
 
-function Header({user}) {
+function Header() {
   const {logoutUser} = useDashboardContext();
   return (
     <div className="flex justify-between">

@@ -2,12 +2,12 @@ import Button from "../../ui/Button";
 import { useDashboardContext } from "../../ui/DashboardLayout"
 
 function LogoutContainer() {
-  const { showLogout, setShowLogout } = useDashboardContext();
+  const { showLogout, setShowLogout, user, logoutUser } = useDashboardContext();
   return (
     <div className="">
-      <Button onClick={()=>setShowLogout((showLogout)=> !showLogout)}>John</Button>
+      <Button onClick={()=>setShowLogout((showLogout)=> !showLogout)}>{user.firstName}</Button>
       <div className="absolute">
-        {showLogout && <Button>Logout</Button>}
+        {showLogout && <Button onClick={logoutUser}>Logout</Button>}
       </div>
     </div>
   )
