@@ -1,4 +1,5 @@
 
+import LogoutContainer from "../features/user/LogoutContainer";
 import Button from "./Button";
 import Dark from "./Dark"
 import { useDashboardContext } from "./DashboardLayout"
@@ -12,9 +13,9 @@ function Header({user}) {
 
       <h1>Dashboard</h1>
 
-      <div>
-        <p>{user.firstName}</p>
-        <Button onClick={logoutUser}>Logout</Button>
+      <div className="flex items-center">
+
+        <LogoutContainer />
         <Dark />
       </div>
     </div>

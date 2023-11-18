@@ -1,7 +1,8 @@
 import { Profiler, useState } from 'react'
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import Job, { loader as jobLoader} from './features/job/Job';
-import {loader as dashboardLoader} from './ui/DashboardLayout'
+// import {loader as dashboardLoader} from './ui/DashboardLayout';
+// import {loader as jobsLoader} form './features/JobList';
 import { action as signUpAction } from './features/user/Signup';
 import { action as loginAction } from './features/user/Login'
 
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashboardLayout />,
-    loader: dashboardLoader,
+    // loader: dashboardLoader,
     children: [
       {
         index: true,
@@ -41,7 +42,8 @@ const router = createBrowserRouter([
       },
       {
         path: "jobs",
-        element: <JobList />
+        element: <JobList />,
+        // loader: jobsLoader
       },
       {
         path: "stats",

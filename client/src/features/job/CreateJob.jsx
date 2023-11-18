@@ -1,13 +1,47 @@
 import { useContext } from "react"
-import { Outlet } from "react-router-dom"
+import { Form, Outlet } from "react-router-dom"
+import Button from "../../ui/Button"
 
 function CreateJob() {
   const user = useContext(Outlet)
   return (
 
     <div>
-      Create job
-      {user}
+      <Form>
+        <label className="">Company</label>
+        <input
+          type="text"
+          className="input"
+          name="company"
+          required
+          />
+
+        <label className="">Position</label>
+        <input
+          type="text"
+          className="input"
+          name="position"
+          required
+          />
+
+        <label className="">Type</label>
+        <input
+          type="text"
+          className="input"
+          name="type"
+          required
+          />
+
+        <label className="">Status</label>
+        <input
+          type="text"
+          className="input"
+          name="status"
+          required
+          />
+        <Button>Submit</Button>
+      </Form>
+
     </div>
   )
 }
