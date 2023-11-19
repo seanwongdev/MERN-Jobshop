@@ -1,5 +1,6 @@
 import { Form, useNavigation, useOutletContext } from "react-router-dom";
 import Button from "../../ui/Button";
+import { toast } from "react-toastify";
 
 function CreateJob() {
   const navigation = useNavigation();
@@ -51,7 +52,12 @@ export async function action({ request }) {
   });
   console.log(res);
   const output = await res.json();
-  console.log(output);
+  if (output.error) {
+    toast.error(output.message);
+    return null;
+  }
+  toast.success("Created Job Successfully");
+  return null;
 }
 
 export default CreateJob;
