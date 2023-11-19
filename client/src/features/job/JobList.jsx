@@ -11,11 +11,15 @@ export const loader = async () => {
 function JobList() {
   const {jobs} = useLoaderData();
   return (
-    <div>
-      Time to see list of jobs below:
-      {jobs.map((job)=> <Job/>)}
+    <>
+      <p>
+        Time to see list of jobs below:
+      </p>
+      <div className="grid md:grid-cols-2 md:gap-8">
+        {jobs.map((job)=> <Job company={job.company} location={job.location} position={job.position} type={job.type} status={job.status} createdAt={job.createdAt} key={job._id}/>)}
 
-    </div>
+      </div>
+    </>
   )
 }
 
