@@ -3,7 +3,27 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
 exports.getAllJobs = async (req, res) => {
-  const jobs = await Job.find();
+  const { search, status, type } = req.query;
+  const queryObj = {
+    user: req.user.id,
+  };
+
+  if (search) {
+    queryObj.$or = [
+      { position: { $regex: search, $options: "i" } },
+      { company: { $regex: search, $options: "i" } },
+    ];
+  }
+
+  if (status && status !== "all") {
+    queryObj.status = req.query.status;
+  }
+
+  if (type && type !== "all") {
+    queryObj.type = req.query.type;
+  }
+
+  const jobs = await Job.find(queryObj);
   res.status(200).json({
     status: "success",
     results: jobs.length,
