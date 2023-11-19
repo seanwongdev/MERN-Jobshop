@@ -1,9 +1,9 @@
-const User = require('../models/userModel');
+const User = require("../models/userModel");
 
 exports.getAllUsers = async (req, res) => {
   const users = await User.find();
   res.status(200).json({
-    status: 'success',
+    status: "success",
     results: users.length,
     data: { users },
   });
@@ -12,16 +12,16 @@ exports.getAllUsers = async (req, res) => {
 exports.createUser = async (req, res) => {
   const newUser = await User.create(req.body);
   res.status(201).json({
-    status: 'success',
+    status: "success",
     data: { user: newUser },
   });
 };
 
 exports.getUser = async (req, res) => {
   const { id } = req.params;
-  const user = await User.findById(id).populate('jobs');
+  const user = await User.findById(id).populate("jobs");
   res.status(200).json({
-    status: 'success',
+    status: "success",
     data: { user },
   });
 };
@@ -29,7 +29,7 @@ exports.getUser = async (req, res) => {
 exports.getCurrentUser = async (req, res) => {
   const user = await User.findOne({ _id: req.user.id });
   res.status(200).json({
-    status: 'success',
+    status: "success",
     data: { user },
   });
 };
@@ -38,7 +38,7 @@ exports.updateUser = async (req, res) => {
   const { id } = req.params;
   const user = await User.findByIdAndUpdate(id);
   res.status(200).json({
-    status: 'success',
+    status: "success",
     data: { user },
   });
 };
@@ -47,7 +47,7 @@ exports.deleteUser = async (req, res) => {
   const { id } = req.params;
   await User.findByIdAndDelete(id);
   res.status(200).json({
-    status: 'success',
+    status: "success",
     data: null,
   });
 };

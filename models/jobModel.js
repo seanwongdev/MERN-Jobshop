@@ -15,7 +15,7 @@ const jobSchema = new mongoose.Schema({
   type: {
     type: String,
     required: [true, "Please indicate what type of role this is"],
-    default: "full-time",
+    default: "Full-time",
     enum: {
       values: ["Full-time", "Part-time", "Contract", "Internship"],
       message:
