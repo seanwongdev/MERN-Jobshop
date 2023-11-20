@@ -15,11 +15,11 @@ exports.getAllJobs = async (req, res) => {
     ];
   }
 
-  if (status && status !== "all") {
+  if (status && status !== "All") {
     queryObj.status = req.query.status;
   }
 
-  if (type && type !== "all") {
+  if (type && type !== "All") {
     queryObj.type = req.query.type;
   }
 

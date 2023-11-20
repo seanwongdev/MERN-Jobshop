@@ -7,8 +7,20 @@ export const loader = async ({ request }) => {
   const params = Object.fromEntries([
     ...new URL(request.url).searchParams.entries(),
   ]);
+  // console.log(new URLSearchParams(params).toString());
   console.log(params);
-  const res = await fetch("/api/v1/jobs");
+  const searchQuery = params.search;
+  const typeQuery = params.type;
+  console.log(typeQuery);
+  const statusQuery = params.status;
+  const fetchUrl =
+    "/api/v1/jobs" +
+    (searchQuery ? `?search=${searchQuery}` : "") +
+    (typeQuery ? (searchQuery ? "&" : "?") + `type=${typeQuery}` : "") +
+    (statusQuery
+      ? (searchQuery || typeQuery ? "&" : "?") + `status=${statusQuery}`
+      : "");
+  const res = await fetch(fetchUrl);
   const { data } = await res.json();
 
   return data;
