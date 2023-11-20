@@ -1,5 +1,3 @@
-function DeleteJob() {
-  return <div></div>;
-}
+function DeleteJob() {}
 
 export default DeleteJob;

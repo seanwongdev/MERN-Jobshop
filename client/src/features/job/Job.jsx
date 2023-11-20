@@ -1,3 +1,4 @@
+import { Form } from "react-router-dom";
 import Button from "../../ui/Button";
 
 function Job({ company, position, status, type, createdAt, id }) {
@@ -12,11 +13,13 @@ function Job({ company, position, status, type, createdAt, id }) {
         <p>{createdAt}</p>
         <p>{type}</p>
         <p>{status}</p>
-        <div>
+        <div className="flex items-center justify-left">
           <Button type="secondary" to={`/dashboard/jobs/${id}`}>
             Edit
           </Button>
-          <Button type="primary">Delete</Button>
+          <Form method="post" action={`/dashboard/delete-job/${id}`}>
+            <Button type="primary">Delete</Button>
+          </Form>
         </div>
       </div>
     </div>
