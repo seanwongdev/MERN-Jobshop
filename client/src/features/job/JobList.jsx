@@ -2,7 +2,12 @@ import { useLoaderData } from "react-router-dom";
 import Job from "./Job";
 import JobSearch from "./JobSearch";
 
-export const loader = async () => {
+export const loader = async ({ request }) => {
+  console.log(request.url);
+  const params = Object.fromEntries([
+    ...new URL(request.url).searchParams.entries(),
+  ]);
+  console.log(params);
   const res = await fetch("/api/v1/jobs");
   const { data } = await res.json();
 
