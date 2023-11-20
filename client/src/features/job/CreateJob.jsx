@@ -56,9 +56,9 @@ export async function action({ request }) {
       },
       body: JSON.stringify(data),
     });
-    console.log(res);
+
     const output = await res.json();
-    console.log(output);
+
     if (output.error) throw new Error(output.error.message);
     toast.success("Created Job Successfully");
     return redirect("/dashboard/jobs");

@@ -5,7 +5,7 @@ import JobSearch from "./JobSearch";
 export const loader = async () => {
   const res = await fetch("/api/v1/jobs");
   const { data } = await res.json();
-  console.log(data);
+
   return data;
 };
 
