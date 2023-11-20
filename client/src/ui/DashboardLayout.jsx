@@ -11,9 +11,11 @@ const DashboardContext = createContext();
 export const loader = async function () {
   try {
     const res = await fetch("/api/v1/users/current-user");
+    if (!res.ok) throw new Error("You need to be logged in");
     const { data } = await res.json();
     return data;
   } catch (error) {
+    toast.error(error.message);
     return redirect("/");
   }
 };
