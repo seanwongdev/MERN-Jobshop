@@ -15,6 +15,10 @@ import DashboardLayout from "./ui/DashboardLayout";
 import Stats from "./features/stats/Stats";
 import Profile from "./features/profile/Profile";
 import Signup from "./features/user/Signup";
+import EditJob, {
+  action as editJobAction,
+  loader as editJobLoader,
+} from "./features/job/EditJob";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +44,12 @@ const router = createBrowserRouter([
         index: true,
         element: <CreateJob />,
         action: createJobAction,
+      },
+      {
+        path: "jobs/:id",
+        element: <EditJob />,
+        loader: editJobLoader,
+        action: editJobAction,
       },
       {
         path: "jobs",

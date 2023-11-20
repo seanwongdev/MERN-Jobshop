@@ -36,7 +36,7 @@ function Login() {
             <input type="password" className="input" name="password" required />
           </div>
 
-          <Button disabled={isSubmitting}>
+          <Button type="primary" disabled={isSubmitting}>
             {isSubmitting ? "Submitting..." : "Submit"}
           </Button>
         </Form>
