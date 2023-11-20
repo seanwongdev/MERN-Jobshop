@@ -71,7 +71,6 @@ function EditJob() {
 
 export async function action({ request, params }) {
   try {
-    console.log(request.params);
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
 
