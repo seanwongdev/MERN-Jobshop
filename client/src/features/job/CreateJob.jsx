@@ -40,24 +40,27 @@ function CreateJob() {
 }
 
 export async function action({ request }) {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
+  try {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
 
-  const res = await fetch("/api/v1/jobs", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-  console.log(res);
-  const output = await res.json();
-  if (output.error) {
-    toast.error(output.message);
+    const res = await fetch("/api/v1/jobs", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    console.log(res);
+    const output = await res.json();
+    console.log(output);
+    if (output.error) throw new Error(output.error.message);
+    toast.success("Created Job Successfully");
+    return null;
+  } catch (err) {
+    toast.error(err.message);
     return null;
   }
-  toast.success("Created Job Successfully");
-  return null;
 }
 
 export default CreateJob;
