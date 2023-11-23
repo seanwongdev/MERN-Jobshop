@@ -1,8 +1,9 @@
 const Job = require("../models/jobModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
+const mongoose = require("mongoose");
 
-exports.getAllJobs = async (req, res) => {
+exports.getAllJobs = catchAsync(async (req, res, next) => {
   const { search, status, type } = req.query;
   const queryObj = {
     user: req.user.id,
@@ -29,7 +30,7 @@ exports.getAllJobs = async (req, res) => {
     results: jobs.length,
     data: { jobs },
   });
-};
+});
 
 exports.createJob = catchAsync(async (req, res, next) => {
   req.body.user = req.user.id;
@@ -41,7 +42,7 @@ exports.createJob = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getJob = async (req, res) => {
+exports.getJob = catchAsync(async (req, res, next) => {
   const { id } = req.params;
   const job = await Job.findById(id).populate({
     path: "user",
@@ -51,9 +52,9 @@ exports.getJob = async (req, res) => {
     status: "success",
     data: { job },
   });
-};
+});
 
-exports.patchJob = async (req, res) => {
+exports.patchJob = catchAsync(async (req, res, next) => {
   const { id } = req.params;
   const job = await Job.findByIdAndUpdate(id, req.body, {
     new: true,
@@ -63,9 +64,9 @@ exports.patchJob = async (req, res) => {
     status: "success",
     data: { job },
   });
-};
+});
 
-exports.deleteJob = async (req, res) => {
+exports.deleteJob = catchAsync(async (req, res, next) => {
   const { id } = req.params;
   const job = await Job.findByIdAndDelete(id);
 
@@ -73,19 +74,27 @@ exports.deleteJob = async (req, res) => {
     status: "success",
     data: null,
   });
-};
+});
 
-exports.getMonthlyStats = async (req, res) => {
+exports.getMonthlyStats = catchAsync(async (req, res, next) => {
+  console.log(req.user);
   const stats = await Job.aggregate([
     {
+      $match: { user: req.user._id },
+    },
+    {
       $group: {
-        _id: { $month: "$createdAt" },
-        numTourStarts: { $sum: 1 },
+        _id: { year: { $year: "$createdAt" }, month: { $month: "$createdAt" } },
+        totalJobs: { $sum: 1 },
       },
     },
+    {
+      $sort: { "_id.year": 1, "_id.month": 1 },
+    },
   ]);
+
   res.status(200).json({
     status: "success",
     data: { stats },
   });
-};
+});

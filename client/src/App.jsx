@@ -11,12 +11,12 @@ import EditJob, {
   loader as editJobLoader,
 } from "./features/job/EditJob";
 import DeleteJob, { action as deleteJobAction } from "./features/job/DeleteJob";
+import Stats, { loader as statsLoader } from "./features/stats/Stats";
 
 import Home from "./ui/Home";
 import JobList from "./features/job/JobList";
 import Login from "./features/user/Login";
 import DashboardLayout from "./ui/DashboardLayout";
-import Stats from "./features/stats/Stats";
 import Profile from "./features/profile/Profile";
 import Signup from "./features/user/Signup";
 
@@ -64,6 +64,7 @@ const router = createBrowserRouter([
       {
         path: "stats",
         element: <Stats />,
+        loader: statsLoader,
       },
       {
         path: "profile",

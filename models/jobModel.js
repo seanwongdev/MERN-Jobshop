@@ -40,7 +40,7 @@ const jobSchema = new mongoose.Schema({
     default: Date.now(),
   },
   user: {
-    type: mongoose.Schema.ObjectId,
+    type: mongoose.Types.ObjectId,
     ref: "User",
     required: [true, "Job must have a user"],
   },
