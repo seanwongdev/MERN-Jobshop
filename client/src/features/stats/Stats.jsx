@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import JobBarChart from "./JobBarChart";
 
 export const loader = async () => {
   const res = await fetch("/api/v1/jobs/monthly-stats");
@@ -9,22 +10,18 @@ export const loader = async () => {
 
 function Stats() {
   const { stats } = useLoaderData();
-  function getMonthName(monthNumber) {
-    const date = new Date(2023, monthNumber - 1, 1);
-    const options = { month: "long" };
-    return new Intl.DateTimeFormat("en-US", options).format(date);
-  }
+  console.log(stats);
+
   return (
     <div>
       Monthly Stats
-      {stats.map((month) => {
-        return (
-          <p key={month._id}>
-            {month.totalJobs} jobs in {getMonthName(month._id.month)}
-            {month._id.year}
-          </p>
-        );
-      })}
+      {stats.map((element) => (
+        <p>
+          {element.date} - {element.totalJobs} jobs
+        </p>
+      ))}
+      ;
+      <JobBarChart data={stats} />
     </div>
   );
 }

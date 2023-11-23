@@ -2,6 +2,7 @@ const Job = require("../models/jobModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const mongoose = require("mongoose");
+const dayjs = require("dayjs");
 
 exports.getAllJobs = catchAsync(async (req, res, next) => {
   const { search, status, type } = req.query;
@@ -77,8 +78,7 @@ exports.deleteJob = catchAsync(async (req, res, next) => {
 });
 
 exports.getMonthlyStats = catchAsync(async (req, res, next) => {
-  console.log(req.user);
-  const stats = await Job.aggregate([
+  let stats = await Job.aggregate([
     {
       $match: { user: req.user._id },
     },
@@ -89,10 +89,25 @@ exports.getMonthlyStats = catchAsync(async (req, res, next) => {
       },
     },
     {
-      $sort: { "_id.year": 1, "_id.month": 1 },
+      $sort: { "_id.year": -1, "_id.month": -1 },
+    },
+    {
+      $limit: 6,
     },
   ]);
-
+  stats = stats
+    .map((el) => {
+      const {
+        _id: { year, month },
+        totalJobs,
+      } = el;
+      const date = dayjs()
+        .month(month - 1)
+        .year(year)
+        .format("MMM YY");
+      return { date, totalJobs };
+    })
+    .reverse();
   res.status(200).json({
     status: "success",
     data: { stats },
