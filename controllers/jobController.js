@@ -84,15 +84,15 @@ exports.getMonthlyStats = catchAsync(async (req, res, next) => {
     },
     {
       $group: {
-        _id: { year: { $year: "$createdAt" }, month: { $month: "$createdAt" } },
+        _id: {
+          year: { $year: "$createdAt" },
+          month: { $month: "$createdAt" },
+        },
         totalJobs: { $sum: 1 },
       },
     },
     {
       $sort: { "_id.year": -1, "_id.month": -1 },
-    },
-    {
-      $limit: 6,
     },
   ]);
   stats = stats
@@ -108,6 +108,7 @@ exports.getMonthlyStats = catchAsync(async (req, res, next) => {
       return { date, totalJobs };
     })
     .reverse();
+
   res.status(200).json({
     status: "success",
     data: { stats },
