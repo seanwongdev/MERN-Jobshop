@@ -4,9 +4,11 @@ import {
   flexRender,
   createColumnHelper,
   getPaginationRowModel,
+  getFilteredRowModel,
 } from "@tanstack/react-table";
 import { useState } from "react";
 import DownloadButton from "./DownloadButton";
+import SearchTable from "./SearchTable";
 
 function BasicTable({ jobs }) {
   const columnHelper = createColumnHelper();
@@ -36,16 +38,26 @@ function BasicTable({ jobs }) {
   ];
 
   const [data] = useState(jobs);
-
+  const [globalFilter, setGlobalFilter] = useState("");
   const table = useReactTable({
     data,
     columns,
+    state: {
+      globalFilter,
+    },
+    getFilteredRowModel: getFilteredRowModel(),
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });
   return (
     <div className="p-2 max-w-5xl mx-auto fill-gray-400">
       <div className="flex justify-between mb-2">
+        <SearchTable
+          value={globalFilter ?? ""}
+          onChange={(value) => setGlobalFilter(String(value))}
+          className="p-2 w-1/5 focus:w-1/3 duration-300 border-indigo-50 bg-transparent outline-none border-b-2"
+          placeholder="Search keywords"
+        />
         <DownloadButton data={data} fileName={"jobs"} />
       </div>
       <table className="border border-gray-700 w-full text-left">
@@ -64,20 +76,21 @@ function BasicTable({ jobs }) {
           ))}
         </thead>
         <tbody>
-          {table.getRowModel().rows.length
-            ? table.getRowModel().rows.map((row, i) => (
-                <tr key={row.id} className="">
-                  {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} className="px-3.5 py-2">
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </td>
-                  ))}
-                </tr>
-              ))
-            : null}
+          {table.getRowModel().rows.length ? (
+            table.getRowModel().rows.map((row, i) => (
+              <tr key={row.id} className="">
+                {row.getVisibleCells().map((cell) => (
+                  <td key={cell.id} className="px-3.5 py-2">
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))
+          ) : (
+            <tr className="text-center h-32">
+              <td colSpan={12}>No results found!</td>
+            </tr>
+          )}
         </tbody>
       </table>
       <div className="flex items-center justify-end mt-2 gap-2">
