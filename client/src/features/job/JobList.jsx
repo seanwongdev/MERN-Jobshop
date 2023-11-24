@@ -1,6 +1,8 @@
 import { useLoaderData } from "react-router-dom";
+
 import Job from "./Job";
 import JobSearch from "./JobSearch";
+import BasicTable from "../../components/BasicTable";
 
 export const loader = async ({ request }) => {
   console.log(request.url);
@@ -8,10 +10,8 @@ export const loader = async ({ request }) => {
     ...new URL(request.url).searchParams.entries(),
   ]);
   // console.log(new URLSearchParams(params).toString());
-  console.log(params);
   const searchQuery = params.search;
   const typeQuery = params.type;
-  console.log(typeQuery);
   const statusQuery = params.status;
   const fetchUrl =
     "/api/v1/jobs" +
@@ -28,9 +28,10 @@ export const loader = async ({ request }) => {
 
 function JobList() {
   const { jobs } = useLoaderData();
+  console.log(jobs);
   return (
     <>
-      <JobSearch />
+      {/* <JobSearch />
       <p>Time to see list of jobs below:</p>
       <div className="grid md:grid-cols-2 md:gap-8">
         {jobs.map((job) => (
@@ -44,6 +45,9 @@ function JobList() {
             key={job._id}
           />
         ))}
+      </div> */}
+      <div>
+        <BasicTable jobs={jobs} />
       </div>
     </>
   );
