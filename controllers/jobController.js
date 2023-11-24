@@ -133,8 +133,8 @@ exports.getMonthlyStats = catchAsync(async (req, res, next) => {
         Offer: {
           $sum: { $cond: [{ $eq: ["$status", "Offer"] }, 1, 0] },
         },
-        Rejection: {
-          $sum: { $cond: [{ $eq: ["$status", "Rejection"] }, 1, 0] },
+        Rejected: {
+          $sum: { $cond: [{ $eq: ["$status", "Rejected"] }, 1, 0] },
         },
       },
     },
@@ -155,13 +155,13 @@ exports.getMonthlyStats = catchAsync(async (req, res, next) => {
         Application,
         Interview,
         Offer,
-        Rejection,
+        Rejected,
       } = element;
       const date = dayjs()
         .month(month - 1)
         .year(year)
         .format("MMM YY");
-      return { date, Application, Interview, Offer, Rejection };
+      return { date, Application, Interview, Offer, Rejected };
     })
     .reverse();
 

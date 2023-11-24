@@ -21,10 +21,12 @@ function BreakdownBarChart({ data }) {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />
-        <YAxis dataKey="totalJobs" allowDecimals={false} />
+        <YAxis dataKey="Application" allowDecimals={false} />
         <Tooltip />
-        <Bar dataKey="status" fill="#363737" />
-        <Bar dataKey="" fill="#82ca9d" />
+        <Bar dataKey="Application" fill="#E63946" barSize={20} />
+        <Bar dataKey="Interview" fill="#EDAE49" barSize={20} />
+        <Bar dataKey="Offer" fill="#3376BD" barSize={20} />
+        <Bar dataKey="Rejected" fill="#00798C" barSize={20} />
       </BarChart>
       ;
     </ResponsiveContainer>

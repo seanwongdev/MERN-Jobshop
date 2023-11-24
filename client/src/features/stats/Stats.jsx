@@ -13,22 +13,22 @@ export const loader = async () => {
 
 function Stats() {
   const [showSplit, setShowSplit] = useState(false);
-  const { stats } = useLoaderData();
+  const { stats, breakdown } = useLoaderData();
   console.log(stats);
 
   return (
-    <div>
-      Monthly Stats
+    <div className="my-4">
       <Button
         type="primary"
         onClick={() => setShowSplit((showSplit) => !showSplit)}
       >
-        Show Breakdown
+        {showSplit ? "Show Status Breakdown" : "Show Total Per Month"}
       </Button>
+      <p className="text-center font-bold text-xl ">Monthly Stats</p>
       {showSplit ? (
         <JobBarChart data={stats} />
       ) : (
-        <BreakdownBarChart data={stats} />
+        <BreakdownBarChart data={breakdown} />
       )}
     </div>
   );
