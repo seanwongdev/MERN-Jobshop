@@ -78,7 +78,7 @@ function BasicTable({ jobs }) {
         ),
     },
   });
-  console.log(table);
+
   return (
     <div className="p-2 max-w-5xl mx-auto fill-gray-400">
       <div className="flex justify-between mb-2">
