@@ -39,6 +39,12 @@ const jobSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  jobPortal: {
+    type: String,
+    trim: true,
+    defaultValue: "Careers Future",
+    required: [true, "Please indicate where you applied for this job"],
+  },
   user: {
     type: mongoose.Types.ObjectId,
     ref: "User",
