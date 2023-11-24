@@ -94,6 +94,9 @@ exports.getMonthlyStats = catchAsync(async (req, res, next) => {
     {
       $sort: { "_id.year": -1, "_id.month": -1 },
     },
+    {
+      $limit: 9,
+    },
   ]);
   stats = stats
     .map((el) => {
@@ -109,8 +112,61 @@ exports.getMonthlyStats = catchAsync(async (req, res, next) => {
     })
     .reverse();
 
+  let breakdown = await Job.aggregate([
+    {
+      $match: {
+        user: req.user._id,
+      },
+    },
+    {
+      $group: {
+        _id: {
+          year: { $year: "$createdAt" },
+          month: { $month: "$createdAt" },
+        },
+        Application: {
+          $sum: { $cond: [{ $eq: ["$status", "Application"] }, 1, 0] },
+        },
+        Interview: {
+          $sum: { $cond: [{ $eq: ["$status", "Interview"] }, 1, 0] },
+        },
+        Offer: {
+          $sum: { $cond: [{ $eq: ["$status", "Offer"] }, 1, 0] },
+        },
+        Rejection: {
+          $sum: { $cond: [{ $eq: ["$status", "Rejection"] }, 1, 0] },
+        },
+      },
+    },
+    {
+      $sort: {
+        _id: -1,
+      },
+    },
+    {
+      $limit: 9,
+    },
+  ]);
+
+  breakdown = breakdown
+    .map((element) => {
+      const {
+        _id: { year, month },
+        Application,
+        Interview,
+        Offer,
+        Rejection,
+      } = element;
+      const date = dayjs()
+        .month(month - 1)
+        .year(year)
+        .format("MMM YY");
+      return { date, Application, Interview, Offer, Rejection };
+    })
+    .reverse();
+
   res.status(200).json({
     status: "success",
-    data: { stats },
+    data: { stats, breakdown },
   });
 });
