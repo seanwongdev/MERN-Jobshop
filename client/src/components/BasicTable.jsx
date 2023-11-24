@@ -7,8 +7,10 @@ import {
   getFilteredRowModel,
 } from "@tanstack/react-table";
 import { useState } from "react";
+import { DateTime } from "luxon";
 import DownloadButton from "./DownloadButton";
 import SearchTable from "./SearchTable";
+import StatusCell from "./StatusCell";
 
 function BasicTable({ jobs }) {
   const columnHelper = createColumnHelper();
@@ -23,21 +25,35 @@ function BasicTable({ jobs }) {
       cell: (info) => <span>{info.getValue()}</span>,
       header: "Company",
     }),
+    columnHelper.accessor("createdAt", {
+      cell: (info) => (
+        <span>
+          {DateTime.fromISO(info.getValue()).toLocaleString(DateTime.DATE_MED)}
+        </span>
+      ),
+      header: "Date Applied",
+    }),
     columnHelper.accessor("position", {
       cell: (info) => <span>{info.getValue()}</span>,
       header: "Position",
-    }),
-    columnHelper.accessor("status", {
-      cell: (info) => <span>{info.getValue()}</span>,
-      header: "Status",
     }),
     columnHelper.accessor("type", {
       cell: (info) => <span>{info.getValue()}</span>,
       header: "Type",
     }),
+    columnHelper.accessor("jobPortal", {
+      cell: (info) => <span>{info.getValue()}</span>,
+      header: "Platform",
+    }),
+    columnHelper.accessor("status", {
+      cell: StatusCell,
+      header: "Status",
+    }),
   ];
 
-  const [data] = useState(jobs);
+  console.log(columns);
+
+  const [data, setData] = useState(jobs);
   const [globalFilter, setGlobalFilter] = useState("");
   const table = useReactTable({
     data,
@@ -48,7 +64,21 @@ function BasicTable({ jobs }) {
     getFilteredRowModel: getFilteredRowModel(),
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    meta: {
+      updateData: (rowIndex, columnId, value) =>
+        setData((prev) =>
+          prev.map((row, index) =>
+            index === rowIndex
+              ? {
+                  ...prev[rowIndex],
+                  [columnId]: value,
+                }
+              : row
+          )
+        ),
+    },
   });
+  console.log(table);
   return (
     <div className="p-2 max-w-5xl mx-auto fill-gray-400">
       <div className="flex justify-between mb-2">

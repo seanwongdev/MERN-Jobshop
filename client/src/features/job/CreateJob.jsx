@@ -13,11 +13,27 @@ function CreateJob() {
   return (
     <div>
       <Form method="post">
-        <label className="">Company</label>
-        <input type="text" className="input" name="company" required />
+        <label htmlFor="company" className="">
+          Company
+        </label>
+        <input
+          type="text"
+          id="company"
+          className="input"
+          name="company"
+          required
+        />
 
-        <label className="">Position</label>
-        <input type="text" className="input" name="position" required />
+        <label htmlFor="position" className="">
+          Position
+        </label>
+        <input
+          type="text"
+          id="position"
+          className="input"
+          name="position"
+          required
+        />
 
         <label className="">Type</label>
         <select className="input" name="type" id="type">
@@ -36,6 +52,18 @@ function CreateJob() {
           <option value="Offer">Offer</option>
           <option value="Rejected">Rejected</option>
         </select>
+
+        <label htmlFor="jobPortal" className="">
+          Job Portal
+        </label>
+        <input
+          type="text"
+          id="jobPortal"
+          className="input"
+          name="jobPortal"
+          required
+        />
+
         <Button type="primary" disabled={isSubmitting}>
           {isSubmitting ? "Submitting..." : "Submit"}
         </Button>
