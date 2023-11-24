@@ -11,6 +11,7 @@ import { DateTime } from "luxon";
 import DownloadButton from "./DownloadButton";
 import SearchTable from "./SearchTable";
 import StatusCell from "./StatusCell";
+import DateCell from "./DateCell";
 
 function BasicTable({ jobs }) {
   const columnHelper = createColumnHelper();
@@ -26,11 +27,12 @@ function BasicTable({ jobs }) {
       header: "Company",
     }),
     columnHelper.accessor("createdAt", {
-      cell: (info) => (
-        <span>
-          {DateTime.fromISO(info.getValue()).toLocaleString(DateTime.DATE_MED)}
-        </span>
-      ),
+      cell: DateCell,
+      // cell: (info) => (
+      //   <span>
+      //     {DateTime.fromISO(info.getValue()).toLocaleString(DateTime.DATE_MED)}
+      //   </span>
+      // ),
       header: "Date Applied",
     }),
     columnHelper.accessor("position", {
