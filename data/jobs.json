@@ -6,6 +6,7 @@
     "type": "Part-time",
     "status": "Application",
     "createdAt": "2023-01-19T04:25:08.781Z",
+    "jobPortal": "Careers Future",
     "user": "6555950607fee974b9f4db55"
   },
   {
@@ -15,6 +16,7 @@
     "type": "Part-time",
     "status": "Interview",
     "createdAt": "2023-02-20T07:58:43.115Z",
+    "jobPortal": "Company job portal",
     "user": "6555950607fee974b9f4db55"
   },
   {
@@ -24,6 +26,7 @@
     "type": "Full-time",
     "status": "Offer",
     "createdAt": "2023-02-20T07:58:43.115Z",
+    "jobPortal": "Glint sg",
     "user": "6555950607fee974b9f4db55"
   },
   {
@@ -33,6 +36,7 @@
     "type": "Part-time",
     "status": "Interview",
     "createdAt": "2023-03-20T07:58:43.115Z",
+    "jobPortal": "Linked In",
     "user": "6555950607fee974b9f4db55"
   },
   {
@@ -42,6 +46,7 @@
     "type": "Contract",
     "status": "Offer",
     "createdAt": "2023-05-20T07:58:43.115Z",
+    "jobPortal": "Linked In",
     "user": "6555950607fee974b9f4db55"
   },
   {
@@ -51,6 +56,7 @@
     "type": "Contract",
     "status": "Rejected",
     "createdAt": "2023-05-20T07:58:43.115Z",
+    "jobPortal": "Careers Future",
     "user": "6555950607fee974b9f4db55"
   },
   {
@@ -60,6 +66,7 @@
     "type": "Internship",
     "status": "Application",
     "createdAt": "2023-05-20T07:58:43.115Z",
+    "jobPortal": "Careers Future",
     "user": "6555950607fee974b9f4db55"
   },
   {
@@ -69,6 +76,7 @@
     "type": "Full-time",
     "status": "Application",
     "createdAt": "2023-08-20T07:58:43.115Z",
+    "jobPortal": "Stars Innovate",
     "user": "6555950607fee974b9f4db55"
   },
   {
@@ -78,6 +86,7 @@
     "type": "Part-time",
     "status": "Interview",
     "createdAt": "2023-10-20T07:58:43.115Z",
+    "jobPortal": "Glint sg",
     "user": "6555950607fee974b9f4db55"
   },
   {
@@ -87,6 +96,7 @@
     "type": "Full-time",
     "status": "Interview",
     "createdAt": "2023-10-25T07:58:43.115Z",
+    "jobPortal": "Innovate Stars",
     "user": "6555950607fee974b9f4db55"
   },
   {
@@ -96,6 +106,7 @@
     "type": "Full-time",
     "status": "Application",
     "createdAt": "2023-11-25T07:58:43.115Z",
+    "jobPortal": "Careers Future",
     "user": "6555950607fee974b9f4db55"
   },
   {
@@ -105,6 +116,7 @@
     "type": "Part-time",
     "status": "Application",
     "createdAt": "2023-01-11T09:00:00.000Z",
+    "jobPortal": "LinkedIn",
     "user": "6549d418f0d6686293263255"
   },
   {
@@ -114,6 +126,7 @@
     "type": "Part-time",
     "status": "Interview",
     "createdAt": "2023-02-11T09:00:00.000Z",
+    "jobPortal": "Careers Future",
     "user": "6549d418f0d6686293263255"
   },
   {
@@ -123,6 +136,7 @@
     "type": "Full-time",
     "status": "Offer",
     "createdAt": "2023-02-11T09:00:00.000Z",
+    "jobPortal": "Company Website",
     "user": "6549d418f0d6686293263255"
   },
   {
@@ -132,6 +146,7 @@
     "type": "Part-time",
     "status": "Interview",
     "createdAt": "2023-03-11T09:00:00.000Z",
+    "jobPortal": "Direct Company Website",
     "user": "6549d418f0d6686293263255"
   },
   {
@@ -141,6 +156,7 @@
     "type": "Contract",
     "status": "Offer",
     "createdAt": "2023-05-11T09:00:00.000Z",
+    "jobPortal": "LinkedIn",
     "user": "6549d418f0d6686293263255"
   },
   {
@@ -150,6 +166,7 @@
     "type": "Contract",
     "status": "Rejected",
     "createdAt": "2023-05-15T09:00:00.000Z",
+    "jobPortal": "Careers Future",
     "user": "6549d418f0d6686293263255"
   },
   {
@@ -159,6 +176,7 @@
     "type": "Internship",
     "status": "Application",
     "createdAt": "2023-05-20T09:00:00.000Z",
+    "jobPortal": "Careers Future",
     "user": "6549d418f0d6686293263255"
   },
   {
@@ -168,6 +186,7 @@
     "type": "Full-time",
     "status": "Application",
     "createdAt": "2023-07-20T09:00:00.000Z",
+    "jobPortal": "Careers Future",
     "user": "6549d418f0d6686293263255"
   },
   {
@@ -177,6 +196,7 @@
     "type": "Part-time",
     "status": "Interview",
     "createdAt": "2023-10-20T07:58:43.115Z",
+    "jobPortal": "Careers Future",
     "user": "6549d418f0d6686293263255"
   },
   {
@@ -186,6 +206,7 @@
     "type": "Full-time",
     "status": "Interview",
     "createdAt": "2023-10-25T07:58:43.115Z",
+    "jobPortal": "Glint sg",
     "user": "6549d418f0d6686293263255"
   },
   {
@@ -195,6 +216,7 @@
     "type": "Full-time",
     "status": "Application",
     "createdAt": "2023-11-25T07:58:43.115Z",
+    "jobPortal": "Linked In",
     "user": "6549d418f0d6686293263255"
   },
   {
@@ -204,6 +226,7 @@
     "type": "Contract",
     "status": "Interview",
     "createdAt": "2023-11-30T07:58:43.115Z",
+    "jobPortal": "Careers Future",
     "user": "6549d418f0d6686293263255"
   }
 ]
