@@ -4,21 +4,24 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 function DateCell({ getValue, row, column, table }) {
-  const date = DateTime.fromISO(getValue()).toLocaleString();
+  // const date = DateTime.fromISO(getValue()).toLocaleString();
+  const date = new Date(getValue());
   console.log(date);
+
   const { updateData } = table.options.meta;
-  const handleDateSelect = () => {};
-  const handleDateChange = () => {};
+
+  const handleDateChange = (date) => {
+    updateData(row.index, column.id, date);
+  };
   return (
     <div>
       {" "}
-      {date}
+      {/* {date} */}
       <DatePicker
-        // wrapperClassName="date-wrapper"
-        // dateFormat="dd MMM YY"
-        // selected={date}
-        onSelect={handleDateSelect} //when day is clicked
-        onChange={handleDateChange} //only when value has changed
+        wrapperClassName="date-wrapper"
+        dateFormat="d MMM y"
+        selected={date}
+        onChange={(clickedDate) => handleDateChange(clickedDate)}
       />
     </div>
   );
