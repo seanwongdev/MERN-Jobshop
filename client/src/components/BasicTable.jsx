@@ -53,8 +53,6 @@ function BasicTable({ jobs }) {
     }),
   ];
 
-  console.log(columns);
-
   const [data, setData] = useState(jobs);
   const [globalFilter, setGlobalFilter] = useState("");
   const table = useReactTable({
