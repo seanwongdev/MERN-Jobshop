@@ -1,13 +1,14 @@
-import {
-  Form,
-  redirect,
-  useNavigation,
-  useOutletContext,
-} from "react-router-dom";
+import { Form, redirect, useNavigation } from "react-router-dom";
 import Button from "../../ui/Button";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
+import { useDashboardContext } from "../../ui/DashboardLayout";
 
 function CreateJob() {
+  const { setActive } = useDashboardContext();
+  useEffect(() => {
+    setActive(0);
+  }, [setActive]);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   return (

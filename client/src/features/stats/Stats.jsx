@@ -1,8 +1,9 @@
 import { useLoaderData } from "react-router-dom";
 import JobBarChart from "./JobBarChart";
 import Button from "../../ui/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BreakdownBarChart from "./BreakdownBarChart";
+import { useDashboardContext } from "../../ui/DashboardLayout";
 
 export const loader = async () => {
   const res = await fetch("/api/v1/jobs/monthly-stats");
@@ -12,6 +13,10 @@ export const loader = async () => {
 };
 
 function Stats() {
+  const { setActive } = useDashboardContext();
+  useEffect(() => {
+    setActive(2);
+  }, [setActive]);
   const [showSplit, setShowSplit] = useState(false);
   const { stats, breakdown } = useLoaderData();
   console.log(stats);

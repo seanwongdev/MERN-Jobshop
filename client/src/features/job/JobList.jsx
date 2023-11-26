@@ -3,9 +3,10 @@ import { useLoaderData } from "react-router-dom";
 import Job from "./Job";
 import JobSearch from "./JobSearch";
 import BasicTable from "../../components/BasicTable";
+import { useDashboardContext } from "../../ui/DashboardLayout";
+import { useEffect } from "react";
 
 export const loader = async ({ request }) => {
-  console.log(request.url);
   const params = Object.fromEntries([
     ...new URL(request.url).searchParams.entries(),
   ]);
@@ -27,6 +28,10 @@ export const loader = async ({ request }) => {
 };
 
 function JobList() {
+  const { setActive } = useDashboardContext();
+  useEffect(() => {
+    setActive(1);
+  }, [setActive]);
   const { jobs } = useLoaderData();
   console.log(jobs);
   return (

@@ -25,7 +25,7 @@ function DashboardLayout() {
 
   const [showLogout, setShowLogout] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(null);
 
   const navigate = useNavigate();
   const handleToggleSidebar = () => {
