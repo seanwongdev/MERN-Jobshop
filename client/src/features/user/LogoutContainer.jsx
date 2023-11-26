@@ -1,5 +1,7 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "../../ui/Button";
 import { useDashboardContext } from "../../ui/DashboardLayout";
+import { faCaretDown, faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
 function LogoutContainer() {
   const { showLogout, setShowLogout, user, logoutUser } = useDashboardContext();
@@ -9,9 +11,14 @@ function LogoutContainer() {
         type="navbar"
         onClick={() => setShowLogout((showLogout) => !showLogout)}
       >
-        {user.firstName}
+        <span className="flex items-center justify-evenly">
+          <FontAwesomeIcon icon={faCircleUser} />
+          {user.firstName[0].toUpperCase() +
+            user.firstName.toLowerCase().slice(1)}
+          <FontAwesomeIcon icon={faCaretDown} />
+        </span>
       </Button>
-      <div className="absolute">
+      <div className="absolute top-20">
         {showLogout && (
           <Button type="navbar" onClick={logoutUser}>
             Logout

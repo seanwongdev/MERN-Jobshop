@@ -7,13 +7,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 const className = {
   iconSpanClass:
-    "flex items-center justify-center w-[43px] h-[43px] rounded-full group-hover:bg-[#3AAFA9]",
-  iconClass: "text-2xl text-[#DEF2F1]",
-  textClass: "text-[#FEFFFF] font-[400]",
-  textClassActive: "text-[#FEFFFF] font-[400] font-bold",
+    "flex items-center justify-center w-[43px] h-[43px] rounded-full group-hover:bg-primary",
+  iconClass: "text-2xl text-light",
+  textClass: "text-bright font-[400]",
+  textClassActive: "text-bright font-[400] font-bold",
   iconSpanClassActive:
-    "flex items-center justify-center w-[43px] h-[43px] rounded-full bg-[#FEFFFF]",
-  iconClassActive: "text-2xl text-[#2B7A78]",
+    "flex items-center justify-center w-[43px] h-[43px] rounded-full bg-bright",
+  iconClassActive: "text-2xl text-secondary",
 };
 
 const links = [

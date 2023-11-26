@@ -31,9 +31,14 @@ const jobSchema = new mongoose.Schema({
         "Kindly choose between: Application, Interview, Offer and Rejected",
     },
   },
-  address: {
+  salary: {
+    type: String,
+    default: "",
+  },
+  location: {
     type: String,
     trim: true,
+    default: "Singapore",
   },
   createdAt: {
     type: Date,

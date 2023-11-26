@@ -12,7 +12,8 @@ function CreateJob() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   return (
-    <div className="md:px-8">
+    <div className=" py-6 md:mx-10 md:px-10 border rounded-md border-primary border-opacity-30 border-l-0">
+      <span className="text-dark font-semibold text-2xl">Add Job</span>
       <Form method="post">
         <label htmlFor="company" className="">
           Company
@@ -35,6 +36,10 @@ function CreateJob() {
           name="position"
           required
         />
+        <label htmlFor="salary" className="">
+          Salary
+        </label>
+        <input type="text" id="salary" className="input" name="salary" />
 
         <label className="">Type</label>
         <select className="input" name="type" id="type">
@@ -64,6 +69,11 @@ function CreateJob() {
           name="jobPortal"
           required
         />
+
+        <label htmlFor="location" className="">
+          Location
+        </label>
+        <input type="text" id="location" className="input" name="location" />
 
         <Button type="primary" disabled={isSubmitting}>
           {isSubmitting ? "Submitting..." : "Submit"}

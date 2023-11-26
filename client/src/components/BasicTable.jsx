@@ -7,14 +7,21 @@ import {
   getFilteredRowModel,
   getSortedRowModel,
 } from "@tanstack/react-table";
-import { faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSortUp,
+  faSortDown,
+  faMagnifyingGlass,
+  faCirclePlus,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { DateTime } from "luxon";
+
 import DownloadButton from "./DownloadButton";
 import SearchTable from "./SearchTable";
 import StatusCell from "./StatusCell";
 import DateCell from "./DateCell";
+import Button from "../ui/Button";
+import EditCell from "./EditCell";
 
 function BasicTable({ jobs }) {
   const columnHelper = createColumnHelper();
@@ -29,6 +36,10 @@ function BasicTable({ jobs }) {
       cell: (info) => <span>{info.getValue()}</span>,
       header: "Company",
     }),
+    columnHelper.accessor("position", {
+      cell: (info) => <span>{info.getValue()}</span>,
+      header: "Position",
+    }),
     columnHelper.accessor("createdAt", {
       cell: DateCell,
       // cell: (info) => (
@@ -38,13 +49,17 @@ function BasicTable({ jobs }) {
       // ),
       header: "Date Applied",
     }),
-    columnHelper.accessor("position", {
+    columnHelper.accessor("salary", {
       cell: (info) => <span>{info.getValue()}</span>,
-      header: "Position",
+      header: "Salary",
     }),
     columnHelper.accessor("type", {
       cell: (info) => <span>{info.getValue()}</span>,
       header: "Type",
+    }),
+    columnHelper.accessor("location", {
+      cell: EditCell,
+      header: "Location",
     }),
     columnHelper.accessor("jobPortal", {
       cell: (info) => <span>{info.getValue()}</span>,
@@ -84,24 +99,37 @@ function BasicTable({ jobs }) {
   });
 
   return (
-    <div className="p-2 max-w-5xl mx-auto fill-gray-400">
-      <div className="flex justify-between mb-2">
-        <SearchTable
-          value={globalFilter ?? ""}
-          onChange={(value) => setGlobalFilter(String(value))}
-          className="p-2 w-1/5 focus:w-1/3 duration-300 border-indigo-50 bg-transparent outline-none border-b-2"
-          placeholder="Search keywords"
-        />
-        <DownloadButton data={data} fileName={"jobs"} />
+    <div className=" mx-auto">
+      <span className="text-dark font-semibold text-2xl ">
+        Job Applications
+      </span>
+      <div className="flex justify-between my-2">
+        <div className="w-1/2 flex items-center gap-1">
+          <FontAwesomeIcon className="text-primary" icon={faMagnifyingGlass} />
+          <SearchTable
+            value={globalFilter ?? ""}
+            onChange={(value) => setGlobalFilter(String(value))}
+            className="p-2 w-1/5 focus:w-1/3 duration-300 border-light focus:border-primary bg-transparent outline-none border-b-2"
+            placeholder="Search keywords"
+          />
+        </div>
+        <div className="flex items-center justify-center gap-4">
+          <DownloadButton data={data} fileName={"jobs"} />
+          <Button to={"/dashboard"} type="dark">
+            <span className="flex items-center justify-center gap-2">
+              <FontAwesomeIcon icon={faCirclePlus} /> Add a New Job{" "}
+            </span>
+          </Button>
+        </div>
       </div>
-      <table className="border border-gray-700 w-full text-left">
-        <thead className="bg-indigo-600 text-white">
+      <table className=" w-full text-left">
+        <thead className="bg-light text-secondary border-b border-primary">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
                 <th
                   key={header.id}
-                  className="capitalize px-3.5 py-2"
+                  className="capitalize px-3.5 py-2 "
                   onClick={header.column.getToggleSortingHandler()}
                 >
                   {flexRender(
@@ -110,8 +138,10 @@ function BasicTable({ jobs }) {
                   )}
                   {
                     {
-                      asc: <FontAwesomeIcon icon={faSortUp} />,
-                      desc: <FontAwesomeIcon icon={faSortDown} />,
+                      asc: <FontAwesomeIcon className="ms-2" icon={faSortUp} />,
+                      desc: (
+                        <FontAwesomeIcon className="ms-2" icon={faSortDown} />
+                      ),
                     }[header.column.getIsSorted()]
                   }
                 </th>
@@ -124,7 +154,10 @@ function BasicTable({ jobs }) {
             table.getRowModel().rows.map((row, i) => (
               <tr key={row.id} className="">
                 {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} className="px-3.5 py-2">
+                  <td
+                    key={cell.id}
+                    className="border border-primary border-opacity-50 border-t-0 "
+                  >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
@@ -143,7 +176,7 @@ function BasicTable({ jobs }) {
             table.previousPage();
           }}
           disabled={!table.getCanPreviousPage()}
-          className="p-1 border border-gray-300 px-2 disabled:opacity-30"
+          className="p-1 border border-primary px-2 disabled:opacity-30"
         >
           {"<"}
         </button>
@@ -152,7 +185,7 @@ function BasicTable({ jobs }) {
             table.nextPage();
           }}
           disabled={!table.getCanNextPage()}
-          className="p-1 border border-gray-300 px-2 disabled:opacity-30"
+          className="p-1 border border-primary px-2 disabled:opacity-30"
         >
           {">"}
         </button>

@@ -51,7 +51,7 @@ function JobList() {
           />
         ))}
       </div> */}
-      <div className="md:px-8">
+      <div className=" py-6 md:mx-10 md:px-10 border rounded-md border-primary border-opacity-30 border-l-0">
         <BasicTable jobs={jobs} />
       </div>
     </>

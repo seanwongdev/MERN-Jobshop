@@ -29,14 +29,12 @@ function DateCell({ getValue, row, column, table }) {
     }
   };
   return (
-    <div>
-      {" "}
-      {/* {date} */}
+    <div className="w-0">
       <DatePicker
-        wrapperClassName="date-wrapper"
         dateFormat="d MMM y"
         selected={date}
         onChange={(clickedDate) => handleDateChange(clickedDate)}
+        className="p-3 outline-none hover:bg-light transition-colors "
       />
     </div>
   );

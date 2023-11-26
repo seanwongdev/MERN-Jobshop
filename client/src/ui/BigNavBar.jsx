@@ -11,14 +11,14 @@ function BigNavBar() {
   const { showSidebar, setShowSidebar, active, setActive } =
     useDashboardContext();
   return (
-    <div className="p-4 flex flex-col gap-2 bg-[#2B7a78] h-screen">
+    <div className="p-4 flex flex-col gap-2 bg-secondary h-screen">
       <span className="flex items-center justify-left gap-4 mb-10">
         {showSidebar && (
-          <span className="font-bold text-3xl text-[#FEFFFF]">Jobshop</span>
+          <span className="font-bold text-3xl text-bright">Jobshop</span>
         )}
         <Button>
           <FontAwesomeIcon
-            className="text-5xl text-[#FEFFFF]"
+            className="text-5xl text-bright"
             icon={faCubesStacked}
             onClick={() => setShowSidebar(true)}
           />

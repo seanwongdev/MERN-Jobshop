@@ -22,18 +22,18 @@ function Stats() {
   console.log(stats);
 
   return (
-    <div className="my-4 md:px-8">
+    <div className="py-6 md:px-10 md:mx-10 border rounded-md border-primary border-opacity-30 border-l-0">
       <Button
-        type="primary"
+        type="secondary"
         onClick={() => setShowSplit((showSplit) => !showSplit)}
       >
-        {showSplit ? "Show Status Breakdown" : "Show Total Per Month"}
+        {showSplit ? "Show Total Per Month" : "Show Status Breakdown"}
       </Button>
       <p className="text-center font-bold text-xl ">Monthly Stats</p>
       {showSplit ? (
-        <JobBarChart data={stats} />
-      ) : (
         <BreakdownBarChart data={breakdown} />
+      ) : (
+        <JobBarChart data={stats} />
       )}
     </div>
   );

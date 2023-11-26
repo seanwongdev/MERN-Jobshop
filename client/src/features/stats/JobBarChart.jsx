@@ -25,7 +25,6 @@ function JobBarChart({ data }) {
         <Tooltip />
         <Bar dataKey="totalJobs" fill="#363737" />
       </BarChart>
-      ;
     </ResponsiveContainer>
   );
 }
