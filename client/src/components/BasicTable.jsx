@@ -5,7 +5,10 @@ import {
   createColumnHelper,
   getPaginationRowModel,
   getFilteredRowModel,
+  getSortedRowModel,
 } from "@tanstack/react-table";
+import { faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { DateTime } from "luxon";
 import DownloadButton from "./DownloadButton";
@@ -62,6 +65,7 @@ function BasicTable({ jobs }) {
       globalFilter,
     },
     getFilteredRowModel: getFilteredRowModel(),
+    getSortedRowModel: getSortedRowModel(),
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     meta: {
@@ -95,11 +99,21 @@ function BasicTable({ jobs }) {
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id} className="capitalize px-3.5 py-2">
+                <th
+                  key={header.id}
+                  className="capitalize px-3.5 py-2"
+                  onClick={header.column.getToggleSortingHandler()}
+                >
                   {flexRender(
                     header.column.columnDef.header,
                     header.getContext()
                   )}
+                  {
+                    {
+                      asc: <FontAwesomeIcon icon={faSortUp} />,
+                      desc: <FontAwesomeIcon icon={faSortDown} />,
+                    }[header.column.getIsSorted()]
+                  }
                 </th>
               ))}
             </tr>
