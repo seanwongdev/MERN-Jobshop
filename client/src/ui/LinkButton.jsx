@@ -1,12 +1,17 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function LinkButton({ children, to, onClick }) {
-  const className = "";
+  const className = "flex items-center justify-left gap-5 group";
 
   return (
-    <Link to={to} onClick={onClick}>
+    <NavLink
+      to={to}
+      onClick={onClick}
+      className={className}
+      activeClassName="active-link"
+    >
       {children}
-    </Link>
+    </NavLink>
   );
 }
 

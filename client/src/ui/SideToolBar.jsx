@@ -1,13 +1,17 @@
 import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSliders } from "@fortawesome/free-solid-svg-icons";
+import { faCircleChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { useDashboardContext } from "./DashboardLayout";
 
 function SideToolBar() {
   const { handleToggleSidebar } = useDashboardContext();
   return (
-    <Button type="toolbar" onClick={handleToggleSidebar}>
-      <FontAwesomeIcon icon={faSliders} />
+    <Button type="toolbar">
+      <FontAwesomeIcon
+        className="text-2xl text-[#FEF2F1]"
+        icon={faCircleChevronLeft}
+        onClick={handleToggleSidebar}
+      />
     </Button>
   );
 }

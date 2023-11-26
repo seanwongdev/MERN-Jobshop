@@ -1,9 +1,5 @@
 function Profile() {
-  return (
-    <div>
-      profile page
-    </div>
-  )
+  return <div className="md:px-8">profile page</div>;
 }
 
-export default Profile
+export default Profile;

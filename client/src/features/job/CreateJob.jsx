@@ -11,7 +11,7 @@ function CreateJob() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   return (
-    <div>
+    <div className="md:px-8">
       <Form method="post">
         <label htmlFor="company" className="">
           Company

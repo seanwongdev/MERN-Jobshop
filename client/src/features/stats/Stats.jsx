@@ -17,7 +17,7 @@ function Stats() {
   console.log(stats);
 
   return (
-    <div className="my-4">
+    <div className="my-4 md:px-8">
       <Button
         type="primary"
         onClick={() => setShowSplit((showSplit) => !showSplit)}

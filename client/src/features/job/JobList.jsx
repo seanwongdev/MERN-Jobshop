@@ -46,7 +46,7 @@ function JobList() {
           />
         ))}
       </div> */}
-      <div>
+      <div className="md:px-8">
         <BasicTable jobs={jobs} />
       </div>
     </>

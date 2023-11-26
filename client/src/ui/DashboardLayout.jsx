@@ -24,7 +24,9 @@ function DashboardLayout() {
   const { user } = useLoaderData();
 
   const [showLogout, setShowLogout] = useState(false);
-  const [showSidebar, setShowSidebar] = useState(true);
+  const [showSidebar, setShowSidebar] = useState(false);
+  const [active, setActive] = useState(0);
+
   const navigate = useNavigate();
   const handleToggleSidebar = () => {
     setShowSidebar((showSidebar) => !showSidebar);
@@ -41,23 +43,26 @@ function DashboardLayout() {
   return (
     <DashboardContext.Provider
       value={{
+        active,
+        setActive,
         handleToggleSidebar,
         showSidebar,
+        setShowSidebar,
         logoutUser,
         showLogout,
         setShowLogout,
         user,
       }}
     >
-      <div className="md:grid md:grid-cols-[auto,1fr] md:gap-8 px-8 w-screen md:px-5 ">
+      <div className="md:grid md:grid-cols-[auto,1fr]   w-screen  ">
         <div>
           <div className="md:hidden">{showSidebar && <SmallNavBar />}</div>
           <div
-            className={
-              showSidebar
-                ? "hidden md:grid ml-[0px] transition-transform duration-300 ease-in-out"
-                : "hidden md:grid ml-[-250px] transition-transform duration-300 ease-in-out"
-            }
+          // className={
+          //   showSidebar
+          //     ? "hidden md:grid ml-[0px] transition-transform duration-300 ease-in-out"
+          //     : "hidden md:grid ml-[-50px] transition-transform duration-300 ease-in-out"
+          // }
           >
             <BigNavBar />
           </div>
