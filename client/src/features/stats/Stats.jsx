@@ -22,14 +22,14 @@ function Stats() {
   console.log(stats);
 
   return (
-    <div className="py-6 md:px-10 md:mx-10 border rounded-md border-primary border-opacity-30 border-l-0">
+    <div className="py-6 px-6 md:px-10 md:mx-10 md:border md:rounded-md md:border-primary md:border-opacity-30 md:border-l-0">
       <Button
         type="secondary"
         onClick={() => setShowSplit((showSplit) => !showSplit)}
       >
         {showSplit ? "Show Total Per Month" : "Show Status Breakdown"}
       </Button>
-      <p className="text-center font-bold text-xl ">Monthly Stats</p>
+      <p className="text-center font-bold text-xl mt-4">Monthly Stats</p>
       {showSplit ? (
         <BreakdownBarChart data={breakdown} />
       ) : (

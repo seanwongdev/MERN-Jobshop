@@ -17,7 +17,7 @@ function JobBarChart({ data }) {
         width={730}
         height={250}
         data={data}
-        margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+        margin={{ top: 20, right: 20, bottom: 20, left: 0 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />

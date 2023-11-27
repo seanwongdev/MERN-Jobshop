@@ -14,15 +14,20 @@ function BigNavBar() {
     <div className="p-4 flex flex-col gap-2 bg-secondary h-screen">
       <span className="flex items-center justify-left gap-4 mb-10">
         {showSidebar && (
-          <span className="font-bold text-3xl text-bright">Jobshop</span>
+          <Link
+            to="/"
+            className="font-bold text-3xl text-bright hover:text-bright"
+          >
+            Jobshop
+          </Link>
         )}
-        <Button>
+        <button className="border-0 focus:outline-none" disabled={showSidebar}>
           <FontAwesomeIcon
             className="text-5xl text-bright"
             icon={faCubesStacked}
             onClick={() => setShowSidebar(true)}
           />
-        </Button>
+        </button>
 
         {showSidebar && <SideToolBar />}
       </span>

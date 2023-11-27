@@ -42,8 +42,8 @@ function SmallNavBar() {
       </div>
       <div className="z-50 fixed bottom-0 border-t py-4 px-6 border-bright w-full  ">
         <Link
-          to={"/"}
-          className="flex justify-left items-center gap-3 text-3xl text-bright font-bold"
+          to="/"
+          className="flex justify-left items-center gap-3 text-3xl hover:text-bright text-bright font-bold"
         >
           Jobshop
           <FontAwesomeIcon

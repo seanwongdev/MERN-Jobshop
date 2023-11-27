@@ -12,72 +12,102 @@ function CreateJob() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   return (
-    <div className=" py-6 md:mx-10 md:px-10 border rounded-md border-primary border-opacity-30 border-l-0">
+    <div className=" py-6 mx-6 md:mx-10 md:px-10 md:border md:rounded-md md:border-primary md:border-opacity-30 md:border-l-0">
       <span className="text-dark font-semibold text-2xl">Add Job</span>
       <Form method="post">
-        <label htmlFor="company" className="">
-          Company
-        </label>
-        <input
-          type="text"
-          id="company"
-          className="input"
-          name="company"
-          required
-        />
+        <div className="my-2">
+          <label htmlFor="company" className="">
+            Company
+          </label>
+          <input
+            type="text"
+            id="company"
+            className="input"
+            name="company"
+            placeholder="Gogglo"
+            required
+          />
+        </div>
 
-        <label htmlFor="position" className="">
-          Position
-        </label>
-        <input
-          type="text"
-          id="position"
-          className="input"
-          name="position"
-          required
-        />
-        <label htmlFor="salary" className="">
-          Salary
-        </label>
-        <input type="text" id="salary" className="input" name="salary" />
+        <div className="my-2">
+          <label htmlFor="position" className="">
+            Position
+          </label>
+          <input
+            type="text"
+            id="position"
+            className="input"
+            name="position"
+            placeholder="Full Stack Developer"
+            required
+          />
+        </div>
+        <div className="my-2">
+          <label htmlFor="salary" className="">
+            Salary
+          </label>
+          <input
+            type="text"
+            id="salary"
+            className="input"
+            name="salary"
+            placeholder="$8,000"
+          />
+        </div>
 
-        <label className="">Type</label>
-        <select className="input" name="type" id="type">
-          <option value="">Select Type</option>
-          <option value="Full-time">Full-time</option>
-          <option value="Part-time">Part-time</option>
-          <option value="Contract">Contract</option>
-          <option value="Internship">Internship</option>
-        </select>
+        <div className="my-2">
+          <label className="">Type</label>
+          <select className="input" name="type" id="type">
+            <option value="">Select Type</option>
+            <option value="Full-time">Full-time</option>
+            <option value="Part-time">Part-time</option>
+            <option value="Contract">Contract</option>
+            <option value="Internship">Internship</option>
+          </select>
+        </div>
 
-        <label className="">Status</label>
-        <select className="input" name="status" id="status">
-          <option value="">Select Status</option>
-          <option value="Application">Application</option>
-          <option value="Interview">Interview</option>
-          <option value="Offer">Offer</option>
-          <option value="Rejected">Rejected</option>
-        </select>
+        <div className="my-2">
+          <label className="">Status</label>
+          <select className="input" name="status" id="status">
+            <option value="">Select Status</option>
+            <option value="Application">Application</option>
+            <option value="Interview">Interview</option>
+            <option value="Offer">Offer</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </div>
+        <div className="my-2">
+          <label htmlFor="jobPortal" className="">
+            Job Portal
+          </label>
+          <input
+            type="text"
+            id="jobPortal"
+            className="input"
+            name="jobPortal"
+            placeholder="LinkedIn"
+            required
+          />
+        </div>
 
-        <label htmlFor="jobPortal" className="">
-          Job Portal
-        </label>
-        <input
-          type="text"
-          id="jobPortal"
-          className="input"
-          name="jobPortal"
-          required
-        />
+        <div className="my-2">
+          <label htmlFor="location" className="">
+            Location
+          </label>
+          <input
+            type="text"
+            id="location"
+            className="input"
+            name="location"
+            placeholder="Changi"
+          />
+        </div>
 
-        <label htmlFor="location" className="">
-          Location
-        </label>
-        <input type="text" id="location" className="input" name="location" />
-
-        <Button type="primary" disabled={isSubmitting}>
-          {isSubmitting ? "Submitting..." : "Submit"}
-        </Button>
+        <div className="mb-2 mt-4 flex justify-end">
+          <Button type="secondary" disabled={isSubmitting}>
+            {isSubmitting ? "Submitting..." : "Submit"}
+          </Button>
+        </div>
       </Form>
     </div>
   );
