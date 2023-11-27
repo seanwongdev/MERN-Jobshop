@@ -22,6 +22,7 @@ import StatusCell from "./StatusCell";
 import DateCell from "./DateCell";
 import Button from "../ui/Button";
 import EditCell from "./EditCell";
+import EditCurrency from "./EditCurrency";
 
 function BasicTable({ jobs }) {
   const columnHelper = createColumnHelper();
@@ -53,7 +54,7 @@ function BasicTable({ jobs }) {
     }),
     columnHelper.accessor("salary", {
       // cell: (info) => <span>{info.getValue()}</span>,
-      cell: EditCell,
+      cell: EditCurrency,
       header: "Salary",
     }),
     columnHelper.accessor("type", {
