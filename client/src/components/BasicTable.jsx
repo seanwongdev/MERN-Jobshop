@@ -33,11 +33,13 @@ function BasicTable({ jobs }) {
       header: "S/N",
     }),
     columnHelper.accessor("company", {
-      cell: (info) => <span>{info.getValue()}</span>,
+      // cell: (info) => <span>{info.getValue()}</span>,
+      cell: EditCell,
       header: "Company",
     }),
     columnHelper.accessor("position", {
-      cell: (info) => <span>{info.getValue()}</span>,
+      // cell: (info) => <span>{info.getValue()}</span>,
+      cell: EditCell,
       header: "Position",
     }),
     columnHelper.accessor("createdAt", {
@@ -50,7 +52,8 @@ function BasicTable({ jobs }) {
       header: "Date Applied",
     }),
     columnHelper.accessor("salary", {
-      cell: (info) => <span>{info.getValue()}</span>,
+      // cell: (info) => <span>{info.getValue()}</span>,
+      cell: EditCell,
       header: "Salary",
     }),
     columnHelper.accessor("type", {
@@ -62,7 +65,8 @@ function BasicTable({ jobs }) {
       header: "Location",
     }),
     columnHelper.accessor("jobPortal", {
-      cell: (info) => <span>{info.getValue()}</span>,
+      // cell: (info) => <span>{info.getValue()}</span>,
+      cell: EditCell,
       header: "Platform",
     }),
     columnHelper.accessor("status", {

@@ -29,7 +29,7 @@ function DateCell({ getValue, row, column, table }) {
     }
   };
   return (
-    <div className="w-0">
+    <div className="">
       <DatePicker
         dateFormat="d MMM y"
         selected={date}
