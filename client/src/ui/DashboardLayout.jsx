@@ -57,17 +57,11 @@ function DashboardLayout() {
       <div className="md:grid md:grid-cols-[auto,1fr]   w-screen ">
         <div>
           <div className="md:hidden">{showSidebar && <SmallNavBar />}</div>
-          <div
-          // className={
-          //   showSidebar
-          //     ? "hidden md:grid ml-[0px] transition-transform duration-300 ease-in-out"
-          //     : "hidden md:grid ml-[-50px] transition-transform duration-300 ease-in-out"
-          // }
-          >
+          <div className="hidden md:grid">
             <BigNavBar />
           </div>
         </div>
-        <div className="overflow-x-auto overflow-y-hidden">
+        <div className="overflow-x-auto">
           <Header />
           <Outlet context={{ user }} />
         </div>

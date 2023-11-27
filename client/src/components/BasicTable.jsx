@@ -106,21 +106,21 @@ function BasicTable({ jobs }) {
   });
 
   return (
-    <div className=" mx-auto ">
+    <div className=" mx-auto  overflow-x-scroll">
       <span className="text-dark font-semibold text-2xl ">
         Job Applications
       </span>
-      <div className="flex justify-between my-2">
-        <div className="w-1/2 flex items-center gap-1">
+      <div className="flex justify-between my-2 flex-wrap">
+        <div className="w-1/3 flex items-center gap-1">
           <FontAwesomeIcon className="text-primary" icon={faMagnifyingGlass} />
           <SearchTable
             value={globalFilter ?? ""}
             onChange={(value) => setGlobalFilter(String(value))}
-            className="p-2 w-1/5 focus:w-1/3 duration-300 border-light focus:border-primary bg-transparent outline-none border-b-2"
+            className="p-2 w-[150px] focus:w-[300px] duration-300 border-light focus:border-primary bg-transparent outline-none border-b-2"
             placeholder="Search keywords"
           />
         </div>
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center  justify-center gap-4">
           <DownloadButton data={data} fileName={"jobs"} />
           <Button to={"/dashboard"} type="dark">
             <span className="flex items-center justify-center gap-2">
@@ -129,7 +129,7 @@ function BasicTable({ jobs }) {
           </Button>
         </div>
       </div>
-      <table className=" w-full text-left">
+      <table className="w-full text-left ">
         <thead className="bg-light text-secondary border-b border-primary">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
@@ -177,7 +177,7 @@ function BasicTable({ jobs }) {
           )}
         </tbody>
       </table>
-      <div className="flex items-center justify-end mt-2 gap-2">
+      <div className="flex items-center justify-end mt-2 gap-2 flex-wrap">
         <button
           onClick={() => {
             table.previousPage();
