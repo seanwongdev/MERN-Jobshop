@@ -8,8 +8,8 @@ Job Application Tracker (MERN Stack)
 3. make sure to create your own config.env file with following:\
   NODE_ENV=development\
   PORT=3000\
-  DATABASE_PASSWORD=your_database_password
-  DATABASE=your_database
+  DATABASE_PASSWORD=your_database_password\
+  DATABASE=your_database\
   JWT_SECRET=secret\
   JWT_EXPIRES_IN=1d\
   JWT_COOKIE_EXPIRES_IN=1
