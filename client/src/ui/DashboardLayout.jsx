@@ -54,7 +54,7 @@ function DashboardLayout() {
         user,
       }}
     >
-      <div className="md:grid md:grid-cols-[auto,1fr]   w-screen  ">
+      <div className="md:grid md:grid-cols-[auto,1fr]   w-screen ">
         <div>
           <div className="md:hidden">{showSidebar && <SmallNavBar />}</div>
           <div
@@ -67,7 +67,7 @@ function DashboardLayout() {
             <BigNavBar />
           </div>
         </div>
-        <div className="">
+        <div className="overflow-x-auto overflow-y-hidden">
           <Header />
           <Outlet context={{ user }} />
         </div>

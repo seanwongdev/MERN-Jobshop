@@ -39,7 +39,8 @@ function EditCell({ getValue, row, column, table }) {
   return (
     <div>
       <Input
-        htmlSize={8}
+        htmlSize={14}
+        minW={40}
         width="full"
         value={value}
         onChange={(e) => setValue(e.target.value)}

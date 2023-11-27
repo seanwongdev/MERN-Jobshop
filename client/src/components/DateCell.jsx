@@ -13,12 +13,12 @@ function DateCell({ getValue, row, column, table }) {
   const handleDateChange = async (date) => {
     try {
       const jobId = row.original._id;
-      const res = await fetch(`/api/v1/jobs/update-date/${jobId}`, {
+      const res = await fetch(`/api/v1/jobs/${jobId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ createdAt: date }),
+        body: JSON.stringify({ ...row.original, [column.id]: date }),
       });
       if (!res.ok) throw new Error("Date not updated");
       const data = await res.json();
@@ -29,14 +29,13 @@ function DateCell({ getValue, row, column, table }) {
     }
   };
   return (
-    <div className="">
-      <DatePicker
-        dateFormat="d MMM y"
-        selected={date}
-        onChange={(clickedDate) => handleDateChange(clickedDate)}
-        className="p-3 outline-none hover:bg-light transition-colors "
-      />
-    </div>
+    <DatePicker
+      wrapperClassName="flex flex-grow group-hover:bg-light transition-colors"
+      dateFormat="d MMM y"
+      selected={date}
+      onChange={(clickedDate) => handleDateChange(clickedDate)}
+      className="p-3 outline-none group-hover:bg-light transition-colors w-[130px] "
+    />
   );
 }
 

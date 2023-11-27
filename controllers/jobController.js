@@ -67,38 +67,6 @@ exports.patchJob = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.patchStatus = catchAsync(async (req, res, next) => {
-  const { id } = req.params;
-  const { status } = req.body;
-  const updatedJob = await Job.findByIdAndUpdate(
-    id,
-    { status },
-    {
-      new: true,
-    }
-  );
-  res.status(200).json({
-    status: "success",
-    data: { updatedJob },
-  });
-});
-
-exports.patchDate = catchAsync(async (req, res, next) => {
-  const { id } = req.params;
-  const { createdAt } = req.body;
-  const updatedJob = await Job.findByIdAndUpdate(
-    id,
-    { createdAt },
-    {
-      new: true,
-    }
-  );
-  res.status(200).json({
-    status: "success",
-    data: { updatedJob },
-  });
-});
-
 exports.deleteJob = catchAsync(async (req, res, next) => {
   const { id } = req.params;
   const job = await Job.findByIdAndDelete(id);

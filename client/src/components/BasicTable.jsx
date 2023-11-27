@@ -23,6 +23,7 @@ import DateCell from "./DateCell";
 import Button from "../ui/Button";
 import EditCell from "./EditCell";
 import EditCurrency from "./EditCurrency";
+import TypeCell from "./Typecell";
 
 function BasicTable({ jobs }) {
   const columnHelper = createColumnHelper();
@@ -30,7 +31,7 @@ function BasicTable({ jobs }) {
   const columns = [
     columnHelper.accessor("", {
       id: "S/N",
-      cell: (info) => <span>{info.row.index + 1}</span>,
+      cell: (info) => <span className="p-4">{info.row.index + 1}</span>,
       header: "S/N",
     }),
     columnHelper.accessor("company", {
@@ -58,7 +59,8 @@ function BasicTable({ jobs }) {
       header: "Salary",
     }),
     columnHelper.accessor("type", {
-      cell: (info) => <span>{info.getValue()}</span>,
+      // cell: (info) => <span>{info.getValue()}</span>,
+      cell: TypeCell,
       header: "Type",
     }),
     columnHelper.accessor("location", {
@@ -104,7 +106,7 @@ function BasicTable({ jobs }) {
   });
 
   return (
-    <div className=" mx-auto">
+    <div className=" mx-auto ">
       <span className="text-dark font-semibold text-2xl ">
         Job Applications
       </span>
@@ -156,12 +158,12 @@ function BasicTable({ jobs }) {
         </thead>
         <tbody>
           {table.getRowModel().rows.length ? (
-            table.getRowModel().rows.map((row, i) => (
+            table.getRowModel().rows.map((row) => (
               <tr key={row.id} className="">
                 {row.getVisibleCells().map((cell) => (
                   <td
                     key={cell.id}
-                    className="border border-primary border-opacity-50 border-t-0 "
+                    className="border border-primary border-opacity-50 border-t-0 group"
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>

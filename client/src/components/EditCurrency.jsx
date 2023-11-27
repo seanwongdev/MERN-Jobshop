@@ -53,7 +53,8 @@ function EditCurrency({ getValue, row, column, table }) {
     <div>
       <Input
         type="text"
-        htmlSize={2}
+        htmlSize={5}
+        minW={20}
         width="full"
         value={amount}
         onChange={handleInputChange}
