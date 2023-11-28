@@ -26,6 +26,10 @@ app.use(express.json());
 app.use("/api/v1/jobs", authController.protect, jobRouter);
 app.use("/api/v1/users", userRouter);
 
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./public", "index.html"));
+});
+
 app.use(errorHandler);
 
 module.exports = app;
