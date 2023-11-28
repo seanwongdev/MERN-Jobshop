@@ -6,6 +6,7 @@ import {
   Tooltip,
   Bar,
   CartesianGrid,
+  Legend,
 } from "recharts";
 
 function JobBarChart({ data }) {
@@ -23,7 +24,8 @@ function JobBarChart({ data }) {
         <XAxis dataKey="date" />
         <YAxis dataKey="totalJobs" allowDecimals={false} />
         <Tooltip />
-        <Bar dataKey="totalJobs" fill="#363737" />
+        <Legend verticalAlign="bottom" height={5} />
+        <Bar name="Total Applications" dataKey="totalJobs" fill="#003f5c" />
       </BarChart>
     </ResponsiveContainer>
   );

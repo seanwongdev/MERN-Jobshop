@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useDashboardContext } from "../../ui/DashboardLayout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPersonDigging } from "@fortawesome/free-solid-svg-icons";
 
 function Profile() {
   const { setActive } = useDashboardContext();
@@ -7,8 +9,14 @@ function Profile() {
     setActive(3);
   }, [setActive]);
   return (
-    <div className="py-6 md:mx-10 md:px-10 border rounded-md border-primary border-opacity-30 border-l-0">
-      profile page
+    <div className="py-6 mx-6 md:mx-10 md:px-10 md:border md:rounded-md md:border-primary md:border-opacity-30 md:border-l-0 flex flex-col justify-center items-center">
+      <span className="font-semibold text-3xl text-primary">
+        Page is under construction. Look forward to it!
+      </span>
+      <FontAwesomeIcon
+        className="text-5xl mt-5 text-dark"
+        icon={faPersonDigging}
+      />
     </div>
   );
 }

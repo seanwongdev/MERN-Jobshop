@@ -124,8 +124,14 @@ exports.getMonthlyStats = catchAsync(async (req, res, next) => {
           year: { $year: "$createdAt" },
           month: { $month: "$createdAt" },
         },
-        Application: {
-          $sum: { $cond: [{ $eq: ["$status", "Application"] }, 1, 0] },
+        Applied: {
+          $sum: { $cond: [{ $eq: ["$status", "Applied"] }, 1, 0] },
+        },
+        Shortlisted: {
+          $sum: { $cond: [{ $eq: ["$status", "Shortlisted"] }, 1, 0] },
+        },
+        Assessment: {
+          $sum: { $cond: [{ $eq: ["$status", "Assessment"] }, 1, 0] },
         },
         Interview: {
           $sum: { $cond: [{ $eq: ["$status", "Interview"] }, 1, 0] },
@@ -152,7 +158,9 @@ exports.getMonthlyStats = catchAsync(async (req, res, next) => {
     .map((element) => {
       const {
         _id: { year, month },
-        Application,
+        Applied,
+        Shortlisted,
+        Assessment,
         Interview,
         Offer,
         Rejected,
@@ -161,7 +169,15 @@ exports.getMonthlyStats = catchAsync(async (req, res, next) => {
         .month(month - 1)
         .year(year)
         .format("MMM YY");
-      return { date, Application, Interview, Offer, Rejected };
+      return {
+        date,
+        Applied,
+        Shortlisted,
+        Assessment,
+        Interview,
+        Offer,
+        Rejected,
+      };
     })
     .reverse();
 

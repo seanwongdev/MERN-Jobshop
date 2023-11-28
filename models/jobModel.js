@@ -24,11 +24,18 @@ const jobSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    default: "Application",
+    default: "Applied",
     enum: {
-      values: ["Application", "Interview", "Offer", "Rejected"],
+      values: [
+        "Applied",
+        "Shortlisted",
+        "Assessment",
+        "Interview",
+        "Offer",
+        "Rejected",
+      ],
       message:
-        "Kindly choose between: Application, Interview, Offer and Rejected",
+        "Kindly choose between: Applied, Shortlisted, Assessment, Interview, Offer and Rejected",
     },
   },
   salary: {

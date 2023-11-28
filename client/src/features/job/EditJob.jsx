@@ -1,6 +1,7 @@
 import { Form, redirect, useLoaderData, useNavigation } from "react-router-dom";
 import Button from "../../ui/Button";
 import { toast } from "react-toastify";
+import { jobStatusOptions } from "../../utils/constants";
 
 export const loader = async ({ params }) => {
   try {
@@ -56,10 +57,13 @@ function EditJob() {
           defaultValue={status}
         >
           <option value="">Select Status</option>
-          <option value="Application">Application</option>
-          <option value="Interview">Interview</option>
-          <option value="Offer">Offer</option>
-          <option value="Rejected">Rejected</option>
+          {jobStatusOptions.map((option, index) => {
+            return (
+              <option key={index} value={option.option}>
+                {option.option}
+              </option>
+            );
+          })}
         </select>
         <Button type="primary" disabled={isSubmitting}>
           {isSubmitting ? "Submitting..." : "Submit"}

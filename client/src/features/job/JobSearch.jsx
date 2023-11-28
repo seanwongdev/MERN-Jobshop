@@ -1,6 +1,7 @@
 import { Form } from "react-router-dom";
 import Button from "../../ui/Button";
 import LinkButton from "../../ui/LinkButton";
+import { jobStatusOptions } from "../../utils/constants";
 
 function JobSearch() {
   return (
@@ -24,10 +25,13 @@ function JobSearch() {
       <label htmlFor="status">Job Status</label>
       <select name="status" id="status">
         <option value="All">All</option>
-        <option value="Application">Application</option>
-        <option value="Interview">Interview</option>
-        <option value="Offer">Offer</option>
-        <option value="Rejected">Rejected</option>
+        {jobStatusOptions.map((option, index) => {
+          return (
+            <option key={index} value={option.option}>
+              {option.option}
+            </option>
+          );
+        })}
       </select>
 
       <Button type="primary">Submit</Button>

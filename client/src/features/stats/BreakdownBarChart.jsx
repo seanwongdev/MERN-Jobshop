@@ -6,7 +6,9 @@ import {
   Tooltip,
   Bar,
   CartesianGrid,
+  Legend,
 } from "recharts";
+import { jobStatusOptions } from "../../utils/constants";
 
 function BreakdownBarChart({ data }) {
   console.log(data);
@@ -21,12 +23,20 @@ function BreakdownBarChart({ data }) {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />
-        <YAxis dataKey="Application" allowDecimals={false} />
+        <YAxis dataKey="Applied" allowDecimals={false} />
         <Tooltip />
-        <Bar dataKey="Application" fill="#E63946" barSize={20} />
-        <Bar dataKey="Interview" fill="#EDAE49" barSize={20} />
-        <Bar dataKey="Offer" fill="#3376BD" barSize={20} />
-        <Bar dataKey="Rejected" fill="#00798C" barSize={20} />
+        {jobStatusOptions.map((option, index) => {
+          return (
+            <Bar
+              key={index}
+              dataKey={option.option}
+              fill={option.color}
+              barSize={20}
+            />
+          );
+        })}
+
+        <Legend verticalAlign="bottom" height={5} />
       </BarChart>
       ;
     </ResponsiveContainer>
