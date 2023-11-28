@@ -13,7 +13,7 @@ function CreateJob() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   return (
-    <div className=" py-6 mx-6 md:mx-10 md:px-10 md:border md:rounded-md md:border-primary md:border-opacity-30 md:border-l-0">
+    <div className="py-24 md:py-6 mx-6 md:mx-10 md:px-10 md:border md:rounded-md md:border-primary md:border-opacity-30 md:border-l-0">
       <span className="text-dark font-semibold text-2xl">Add Job</span>
       <Form method="post">
         <div className="my-2">
