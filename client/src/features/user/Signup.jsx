@@ -19,18 +19,15 @@ function Signup() {
           <FontAwesomeIcon className="text-6xl" icon={faCubesStacked} />
           <span className="text-2xl ms-4 font-bold">Jobshop</span>
         </div>
-
         <Form method="post">
           <div className="mb-3 flex flex-col ">
             <label className="">First Name</label>
             <input type="text" className="input" name="firstName" required />
           </div>
-
           <div className="mb-3 flex flex-col ">
             <label className="">Last Name</label>
             <input type="text" className="input" name="lastName" required />
           </div>
-
           <div className="mb-3 flex flex-col ">
             <label className="">Email</label>
             <input type="text" className="input" name="email" required />
@@ -40,12 +37,10 @@ function Signup() {
               </p>
             )}
           </div>
-
           <div className="mb-3 flex flex-col ">
             <label className="">Password</label>
             <input type="password" className="input" name="password" required />
           </div>
-
           <div className="mb-3 flex flex-col ">
             <label className="">Confirm Password</label>
             <input
@@ -55,10 +50,14 @@ function Signup() {
               required
             />
           </div>
+
           <Button type="primary" disabled={isSubmitting}>
             {isSubmitting ? "Submitting..." : "Submit"}
           </Button>
         </Form>
+        <span>
+          Already a member? <Button to="/login">Login</Button>
+        </span>
       </div>
     </div>
   );

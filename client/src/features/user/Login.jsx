@@ -19,7 +19,6 @@ function Login() {
           <FontAwesomeIcon className="text-6xl" icon={faCubesStacked} />
           <span className="text-2xl ms-4 font-bold">Jobshop</span>
         </div>
-
         <Form method="post">
           <div className="mb-3 flex flex-col ">
             <label className="">Email</label>
@@ -40,6 +39,9 @@ function Login() {
             {isSubmitting ? "Submitting..." : "Submit"}
           </Button>
         </Form>
+        <span>
+          Not a member yet? <Button to="/signup">Register</Button>
+        </span>
       </div>
     </div>
   );
