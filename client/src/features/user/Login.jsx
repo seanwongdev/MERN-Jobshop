@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Button from "../../ui/Button";
 import { toast } from "react-toastify";
+import Back from "../../ui/Back";
 
 // const isValidEmail = (str) => /^[a-zA-Z0-9. _-]+@[a-zA-Z0-9. -]+\. [a-zA-Z]{2,4}$/.test(str);
 
@@ -13,37 +14,47 @@ function Login() {
   const isSubmitting = navigation.state === "submitting";
 
   return (
-    <div className="flex justify-center items-center w-screen h-screen">
-      <div className=" border rounded-md px-6 py-4 border-gray-500 w-[330px]">
-        <div className="flex justify-center items-center py-3">
-          <FontAwesomeIcon className="text-6xl" icon={faCubesStacked} />
-          <span className="text-2xl ms-4 font-bold">Jobshop</span>
+    <>
+      <div className="flex flex-col items-center w-screen h-screen">
+        <div className="mt-6 w-2/3 mx-auto">
+          <Back />
         </div>
-        <Form method="post">
-          <div className="mb-3 flex flex-col ">
-            <label className="">Email</label>
-            <input type="text" className="input" name="email" required />
-            {formErrors?.email && (
-              <p className="mt-2 rounded bg-red-100 p-2 text-xs text-red-700">
-                {formErrors.email}
-              </p>
-            )}
+        <div className="mt-20 border rounded-md px-6 py-4 border-gray-500 w-[330px]">
+          <div className="flex justify-center items-center py-3">
+            <FontAwesomeIcon className="text-6xl" icon={faCubesStacked} />
+            <span className="text-2xl ms-4 font-bold">Jobshop</span>
           </div>
+          <Form method="post">
+            <div className="mb-3 flex flex-col ">
+              <label className="">Email</label>
+              <input type="text" className="input" name="email" required />
+              {formErrors?.email && (
+                <p className="mt-2 rounded bg-red-100 p-2 text-xs text-red-700">
+                  {formErrors.email}
+                </p>
+              )}
+            </div>
 
-          <div className="mb-3 flex flex-col ">
-            <label className="">Password</label>
-            <input type="password" className="input" name="password" required />
-          </div>
+            <div className="mb-3 flex flex-col ">
+              <label className="">Password</label>
+              <input
+                type="password"
+                className="input"
+                name="password"
+                required
+              />
+            </div>
 
-          <Button type="primary" disabled={isSubmitting}>
-            {isSubmitting ? "Submitting..." : "Submit"}
-          </Button>
-        </Form>
-        <span>
-          Not a member yet? <Button to="/signup">Register</Button>
-        </span>
+            <Button type="primary" disabled={isSubmitting}>
+              {isSubmitting ? "Submitting..." : "Submit"}
+            </Button>
+          </Form>
+          <span>
+            Not a member yet? <Button to="/signup">Register</Button>
+          </span>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
