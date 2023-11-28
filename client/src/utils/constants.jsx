@@ -24,3 +24,14 @@ export const jobStatusOptions = [
     color: "#ffa600",
   },
 ];
+
+export const jobPortals = [
+  "Careers Future",
+  "LinkedIn",
+  "Glints",
+  "STARS SG",
+  "NodeFlair",
+  "Referral",
+  "Company Site",
+  "Others",
+];

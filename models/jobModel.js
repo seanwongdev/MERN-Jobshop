@@ -55,6 +55,19 @@ const jobSchema = new mongoose.Schema({
     type: String,
     trim: true,
     defaultValue: "Careers Future",
+    enum: {
+      values: [
+        "Careers Future",
+        "LinkedIn",
+        "Glints",
+        "STARS SG",
+        "NodeFlair",
+        "Referral",
+        "Company Site",
+        "Others",
+      ],
+      message: "Kindly choose between the options provided",
+    },
     required: [true, "Please indicate where you applied for this job"],
   },
   user: {

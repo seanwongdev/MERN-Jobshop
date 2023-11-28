@@ -14,7 +14,7 @@ import {
   faCirclePlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import DownloadButton from "./DownloadButton";
 import SearchTable from "./SearchTable";
@@ -105,10 +105,19 @@ function BasicTable({ jobs }) {
     },
   });
 
+  const [filteredData, setFilteredData] = useState(jobs);
+  useEffect(() => {
+    // Update filtered data when global filter changes
+    setFilteredData(
+      table.getFilteredRowModel().rows.map((row) => row.original)
+    );
+  }, [globalFilter, table]);
+
   return (
     <div className=" mx-auto  overflow-x-scroll">
       <span className="text-dark font-semibold text-2xl ">
-        Job Applications
+        Job Applications (
+        <span className="text-xl">{filteredData.length} Results</span>)
       </span>
       <div className="flex justify-between my-2 flex-wrap">
         <div className="w-1/3 flex items-center gap-1">

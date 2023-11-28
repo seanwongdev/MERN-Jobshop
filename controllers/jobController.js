@@ -181,8 +181,44 @@ exports.getMonthlyStats = catchAsync(async (req, res, next) => {
     })
     .reverse();
 
+  const portalSplit = await Job.aggregate([
+    {
+      $match: {
+        user: req.user._id,
+      },
+    },
+    {
+      $group: {
+        _id: "$jobPortal",
+        Applied: {
+          $sum: { $cond: [{ $eq: ["$status", "Applied"] }, 1, 0] },
+        },
+        Shortlisted: {
+          $sum: { $cond: [{ $eq: ["$status", "Shortlisted"] }, 1, 0] },
+        },
+        Assessment: {
+          $sum: { $cond: [{ $eq: ["$status", "Assessment"] }, 1, 0] },
+        },
+        Interview: {
+          $sum: { $cond: [{ $eq: ["$status", "Interview"] }, 1, 0] },
+        },
+        Offer: {
+          $sum: { $cond: [{ $eq: ["$status", "Offer"] }, 1, 0] },
+        },
+        Rejected: {
+          $sum: { $cond: [{ $eq: ["$status", "Rejected"] }, 1, 0] },
+        },
+      },
+    },
+    {
+      $sort: {
+        _id: 1,
+      },
+    },
+  ]);
+
   res.status(200).json({
     status: "success",
-    data: { stats, breakdown },
+    data: { stats, breakdown, portalSplit },
   });
 });
