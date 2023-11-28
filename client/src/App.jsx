@@ -19,11 +19,13 @@ import Login from "./features/user/Login";
 import DashboardLayout from "./ui/DashboardLayout";
 import Profile from "./features/profile/Profile";
 import Signup from "./features/user/Signup";
+import Error from "./ui/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    errorElement: <Error />,
   },
   {
     path: "/login",
