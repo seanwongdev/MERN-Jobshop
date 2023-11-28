@@ -1,10 +1,17 @@
-import { Outlet, redirect, useLoaderData, useNavigate } from "react-router-dom";
+import {
+  Outlet,
+  redirect,
+  useLoaderData,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 
 import Header from "./Header";
 import SmallNavBar from "./SmallNavBar";
 import BigNavBar from "./BigNavBar";
 import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
+import Loading from "../ui/Loading";
 
 const DashboardContext = createContext();
 
@@ -22,7 +29,8 @@ export const loader = async function () {
 
 function DashboardLayout() {
   const { user } = useLoaderData();
-
+  const navigation = useNavigation();
+  const isLoading = navigation.state === "loading";
   const [showLogout, setShowLogout] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [active, setActive] = useState(null);
@@ -63,7 +71,7 @@ function DashboardLayout() {
         </div>
         <div className="overflow-x-auto">
           <Header />
-          <Outlet context={{ user }} />
+          {isLoading ? <Loading /> : <Outlet context={{ user }} />}
         </div>
       </div>
     </DashboardContext.Provider>
