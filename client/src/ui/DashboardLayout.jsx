@@ -62,10 +62,12 @@ function DashboardLayout() {
         user,
       }}
     >
-      <div className="md:grid md:grid-cols-[auto,1fr]   w-screen ">
-        <div>
-          <div className="md:hidden">{showSidebar && <SmallNavBar />}</div>
-          <div className="hidden md:grid">
+      <div className="md:grid md:grid-cols-[auto,1fr]   w-screen h-screen ">
+        <div className="">
+          <div className="md:hidden h-full">
+            {showSidebar && <SmallNavBar />}
+          </div>
+          <div className="hidden md:grid h-full">
             <BigNavBar />
           </div>
         </div>

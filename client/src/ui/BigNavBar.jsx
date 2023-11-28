@@ -11,7 +11,7 @@ function BigNavBar() {
   const { showSidebar, setShowSidebar, active, setActive } =
     useDashboardContext();
   return (
-    <div className="p-4 flex flex-col gap-2 bg-secondary h-screen">
+    <div className="p-4 flex flex-col gap-2 bg-secondary h-full ">
       <span className="flex items-center justify-left gap-4 mb-10">
         {showSidebar && (
           <Link

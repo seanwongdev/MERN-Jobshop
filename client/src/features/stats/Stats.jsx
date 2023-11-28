@@ -22,7 +22,7 @@ function Stats() {
   const { stats, breakdown, portalSplit } = useLoaderData();
 
   return (
-    <div className="py-6 px-6 md:px-10 md:mx-10 md:border md:rounded-md md:border-primary md:border-opacity-30 md:border-l-0">
+    <div className="py-6 px-6 md:px-10 md:mx-10 md:border md:rounded-md md:border-primary md:border-opacity-30 md:border-l-0 ">
       <div className="mt-6 ">
         <Infographics data={portalSplit} />
       </div>

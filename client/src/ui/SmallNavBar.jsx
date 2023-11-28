@@ -22,7 +22,7 @@ function SmallNavBar() {
 
     // </div>
     <>
-      <div className="z-50 fixed top-[74px] bg-secondary w-screen h-screen px-6 border-t border-bright">
+      <div className="z-50 fixed top-[74px] bg-secondary w-screen h-full px-6 border-t border-bright">
         <div className="flex flex-col gap-4 mt-8">
           {links.map((link, index) => {
             const { text, path, icon, iconActive, textActive } = link;

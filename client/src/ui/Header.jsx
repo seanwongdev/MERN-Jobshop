@@ -3,7 +3,7 @@ import SideToolBar from "./SideToolBar";
 
 function Header() {
   return (
-    <div className="flex justify-between items-center py-4 md:px-10 px-6 bg-secondary md:bg-white">
+    <div className="fixed md:sticky w-full top-0 z-10 flex justify-between items-center py-4 md:px-10 px-6 bg-secondary md:bg-white ">
       <div className="md:hidden">
         <SideToolBar />
       </div>
