@@ -6,6 +6,7 @@ import {
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
+import { clamp } from "framer-motion";
 
 function Infographics({ data }) {
   const numApplicationsByStatus = data.reduce((acc, cur) => {
@@ -48,8 +49,10 @@ function Infographics({ data }) {
       portalShortlist[portal] += total;
     }
   });
-  console.log(portalShortlist);
-  const favouritePortalApplications = Math.max(...Object.values(portalTotals));
+  const favouritePortalApplications =
+    Object.entries(portalTotals).length === 0
+      ? 0
+      : Math.max(...Object.values(portalTotals));
   const favouritePortal = Object.keys(portalTotals).find(
     (key) => portalTotals[key] === favouritePortalApplications
   );
@@ -64,7 +67,10 @@ function Infographics({ data }) {
     portalPercentage[portal] = percentage;
   });
 
-  const maxPercentage = Math.max(...Object.values(portalPercentage));
+  const maxPercentage =
+    Object.entries(portalTotals).length === 0
+      ? 0
+      : Math.max(...Object.values(portalPercentage));
   const bestPortal = Object.keys(portalPercentage).find(
     (key) => portalPercentage[key] === maxPercentage
   );
@@ -87,7 +93,7 @@ function Infographics({ data }) {
         <CardHeader>
           <Heading size="md"> Assessments Completed</Heading>
           <Heading className="text-primary">
-            {numApplicationsByStatus.Assessment}
+            {numApplicationsByStatus.Assessment || 0}
           </Heading>
         </CardHeader>
         <CardBody>
@@ -98,7 +104,7 @@ function Infographics({ data }) {
         <CardHeader>
           <Heading size="md"> Offers Received </Heading>
           <Heading className="text-primary">
-            {numApplicationsByStatus.Offer}
+            {numApplicationsByStatus.Offer || 0}
           </Heading>
         </CardHeader>
         <CardBody>
@@ -108,7 +114,9 @@ function Infographics({ data }) {
       <Card borderBottom="4px solid #17252A">
         <CardHeader>
           <Heading size="md"> Favourite Portal</Heading>
-          <Heading className="text-primary">{favouritePortal}</Heading>
+          <Heading className="text-primary">
+            {favouritePortal || "None yet"}
+          </Heading>
         </CardHeader>
         <CardBody>
           <Text>
@@ -123,7 +131,7 @@ function Infographics({ data }) {
       <Card borderBottom="4px solid #17252A">
         <CardHeader>
           <Heading size="md"> Best Conversions</Heading>
-          <Heading className="text-primary">{bestPortal}</Heading>
+          <Heading className="text-primary">{bestPortal || "None yet"}</Heading>
         </CardHeader>
         <CardBody>
           <Text>

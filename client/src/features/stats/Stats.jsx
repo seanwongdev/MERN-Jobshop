@@ -27,20 +27,22 @@ function Stats() {
         <Infographics data={portalSplit} />
       </div>
 
-      <div className="my-12">
-        <Button
-          type="secondary"
-          onClick={() => setShowSplit((showSplit) => !showSplit)}
-        >
-          {showSplit ? "Show Total Per Month" : "Show Status Breakdown"}
-        </Button>
-        <p className="text-center font-bold text-xl mt-4">Monthly Stats</p>
-        {showSplit ? (
-          <BreakdownBarChart data={breakdown} />
-        ) : (
-          <JobBarChart data={stats} />
-        )}
-      </div>
+      {stats.length > 0 && (
+        <div className="my-12">
+          <Button
+            type="secondary"
+            onClick={() => setShowSplit((showSplit) => !showSplit)}
+          >
+            {showSplit ? "Show Total Per Month" : "Show Status Breakdown"}
+          </Button>
+          <p className="text-center font-bold text-xl mt-4">Monthly Stats</p>
+          {showSplit ? (
+            <BreakdownBarChart data={breakdown} />
+          ) : (
+            <JobBarChart data={stats} />
+          )}
+        </div>
+      )}
     </div>
   );
 }
