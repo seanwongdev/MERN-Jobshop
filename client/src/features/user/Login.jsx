@@ -72,6 +72,7 @@ export async function action({ request }) {
     });
     console.log(res);
     const output = await res.json();
+    console.log(output);
     if (output.error) {
       toast.error(output.message);
       return null;
