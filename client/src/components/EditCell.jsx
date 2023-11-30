@@ -1,5 +1,5 @@
 import { Input } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 function EditCell({ getValue, row, column, table }) {
@@ -35,7 +35,9 @@ function EditCell({ getValue, row, column, table }) {
       toast.error(err.message);
     }
   };
-
+  useEffect(() => {
+    setValue(initValue);
+  }, [initValue]);
   return (
     <div>
       <Input

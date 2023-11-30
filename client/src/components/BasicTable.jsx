@@ -166,6 +166,7 @@ function BasicTable({ jobs }) {
       console.log(data);
       console.log(newData);
       setData(newData);
+      setFilteredData(newData);
       setRowSelection({});
     } catch (err) {
       console.log(err);
