@@ -1,12 +1,10 @@
 import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { toast } from "react-toastify";
+import { jobType } from "../utils/constants";
 
 function TypeCell({ getValue, row, column, table }) {
   const status = getValue();
   const { updateData } = table.options.meta;
-  const allTypeValues = table.options.data.map((row) => row.type);
-
-  const uniqueTypeValues = [...new Set(allTypeValues)].slice().sort();
 
   const handleTypeChange = async (newType) => {
     try {
@@ -39,7 +37,7 @@ function TypeCell({ getValue, row, column, table }) {
           {status}
         </MenuButton>
         <MenuList>
-          {uniqueTypeValues.map((item, index) => (
+          {jobType.map((item, index) => (
             <MenuItem
               key={index}
               // onClick={() => updateData(row.index, column.id, item)}

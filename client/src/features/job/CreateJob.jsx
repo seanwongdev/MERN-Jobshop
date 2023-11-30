@@ -3,7 +3,7 @@ import Button from "../../ui/Button";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { useDashboardContext } from "../../ui/DashboardLayout";
-import { jobPortals, jobStatusOptions } from "../../utils/constants";
+import { jobPortals, jobStatusOptions, jobType } from "../../utils/constants";
 
 function CreateJob() {
   const { setActive } = useDashboardContext();
@@ -62,10 +62,11 @@ function CreateJob() {
           </label>
           <select className="input" name="type" id="type">
             <option value="">Select Type</option>
-            <option value="Full-time">Full-time</option>
-            <option value="Part-time">Part-time</option>
-            <option value="Contract">Contract</option>
-            <option value="Internship">Internship</option>
+            {jobType.map((element, index) => (
+              <option key={index} value={element}>
+                {element}
+              </option>
+            ))}
           </select>
         </div>
 

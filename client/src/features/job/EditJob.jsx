@@ -1,7 +1,7 @@
 import { Form, redirect, useLoaderData, useNavigation } from "react-router-dom";
 import Button from "../../ui/Button";
 import { toast } from "react-toastify";
-import { jobStatusOptions } from "../../utils/constants";
+import { jobStatusOptions, jobType } from "../../utils/constants";
 
 export const loader = async ({ params }) => {
   try {
@@ -43,10 +43,11 @@ function EditJob() {
         <label className="">Type</label>
         <select className="input" name="type" id="type" defaultValue={type}>
           <option value="">Select Type</option>
-          <option value="Full-time">Full-time</option>
-          <option value="Part-time">Part-time</option>
-          <option value="Contract">Contract</option>
-          <option value="Internship">Internship</option>
+          {jobType.map((element, index) => (
+            <option key={index} value={element}>
+              {element}
+            </option>
+          ))}
         </select>
 
         <label className="">Status</label>

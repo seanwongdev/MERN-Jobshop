@@ -35,3 +35,5 @@ export const jobPortals = [
   "Company Site",
   "Others",
 ];
+
+export const jobType = ["Full-time", "Part-time", "Contract", "Internship"];
