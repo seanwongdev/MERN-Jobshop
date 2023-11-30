@@ -17,12 +17,15 @@ function StatusCell({ getValue, row, column, table }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...row.original, [column.id]: newStatus }),
+        body: JSON.stringify({
+          ...row.original,
+          [column.id]: newStatus.option,
+        }),
       });
       if (!res.ok) throw new Error("Update failed");
       const { data } = await res.json();
       console.log("Job updated", data);
-      updateData(row.index, column.id, newStatus);
+      updateData(row.index, column.id, newStatus.option);
     } catch (err) {
       toast.error(err.message);
     }
