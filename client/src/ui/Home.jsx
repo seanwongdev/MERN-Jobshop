@@ -47,7 +47,7 @@ function Home() {
               Sign Up
             </Button>
             <Button type="primary" to={"/login"}>
-              Login
+              Start Tracking!
             </Button>
           </div>
         </div>
