@@ -46,7 +46,7 @@ function Home() {
             <Button type="primary" to={"/signup"}>
               Sign Up
             </Button>
-            <Button type="primary" to={"/login"}>
+            <Button type="primary" to={"/dashboard"}>
               Start Tracking!
             </Button>
           </div>

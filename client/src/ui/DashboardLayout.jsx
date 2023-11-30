@@ -23,7 +23,7 @@ export const loader = async function () {
     return data;
   } catch (error) {
     toast.error(error.message);
-    return redirect("/");
+    return redirect("/login");
   }
 };
 
