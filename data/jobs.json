@@ -8,7 +8,8 @@
     "createdAt": "2023-01-19T04:25:08.781Z",
     "jobPortal": "Careers Future",
     "user": "6555950607fee974b9f4db55",
-    "location": "east"
+    "location": "east",
+    "salary": "$3,000"
   },
   {
     "_id": "655b1b6b668bd68dc9da9271",
@@ -19,7 +20,8 @@
     "createdAt": "2023-02-20T07:58:43.115Z",
     "jobPortal": "Company Site",
     "user": "6555950607fee974b9f4db55",
-    "location": "east"
+    "location": "east",
+    "salary": "$3,800"
   },
   {
     "_id": "655b1b78668bd68dc9da9278",
@@ -30,7 +32,8 @@
     "createdAt": "2023-02-20T07:58:43.115Z",
     "jobPortal": "Glints",
     "user": "6555950607fee974b9f4db55",
-    "location": "central"
+    "location": "central",
+    "salary": "$4,800"
   },
   {
     "_id": "655b1b8a668bd68dc9da927f",
@@ -41,7 +44,8 @@
     "createdAt": "2023-03-20T07:58:43.115Z",
     "jobPortal": "LinkedIn",
     "user": "6555950607fee974b9f4db55",
-    "location": "Singapore"
+    "location": "Singapore",
+    "salary": "$3,900"
   },
   {
     "_id": "655b1b78668bd68dc9da9279",
@@ -52,7 +56,8 @@
     "createdAt": "2023-05-20T07:58:43.115Z",
     "jobPortal": "LinkedIn",
     "user": "6555950607fee974b9f4db55",
-    "location": "east"
+    "location": "east",
+    "salary": "$5,000"
   },
   {
     "_id": "655b1b78668bd68dc9da9280",
@@ -63,7 +68,8 @@
     "createdAt": "2023-05-20T07:58:43.115Z",
     "jobPortal": "Careers Future",
     "user": "6555950607fee974b9f4db55",
-    "location": "west"
+    "location": "west",
+    "salary": "$3,000"
   },
   {
     "_id": "655b1b78668bd68dc9da9281",
@@ -74,7 +80,8 @@
     "createdAt": "2023-05-20T07:58:43.115Z",
     "jobPortal": "Careers Future",
     "user": "6555950607fee974b9f4db55",
-    "location": "Singapore"
+    "location": "Singapore",
+    "salary": "$5,100"
   },
   {
     "_id": "655b1b78668bd68dc9da9282",
@@ -85,7 +92,8 @@
     "createdAt": "2023-08-20T07:58:43.115Z",
     "jobPortal": "STARS SG",
     "user": "6555950607fee974b9f4db55",
-    "location": "east"
+    "location": "east",
+    "salary": "$4,100"
   },
   {
     "_id": "655b1b78668bd68dc9da9283",
@@ -96,7 +104,8 @@
     "createdAt": "2023-10-20T07:58:43.115Z",
     "jobPortal": "Glints",
     "user": "6555950607fee974b9f4db55",
-    "location": "north"
+    "location": "north",
+    "salary": "$3,200"
   },
   {
     "_id": "655b1b78668bd68dc9da9284",
@@ -107,7 +116,8 @@
     "createdAt": "2023-10-25T07:58:43.115Z",
     "jobPortal": "STARS SG",
     "user": "6555950607fee974b9f4db55",
-    "location": "north"
+    "location": "north",
+    "salary": "$3,400"
   },
   {
     "_id": "655b1b78668bd68dc9da9285",
@@ -118,7 +128,8 @@
     "createdAt": "2023-11-25T07:58:43.115Z",
     "jobPortal": "Careers Future",
     "user": "6555950607fee974b9f4db55",
-    "location": "east"
+    "location": "east",
+    "salary": "$3,500"
   },
   {
     "_id": "655b1b78668bd68dc9da9286",
