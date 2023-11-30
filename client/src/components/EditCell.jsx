@@ -29,7 +29,7 @@ function EditCell({ getValue, row, column, table }) {
       });
       if (!res.ok) throw new Error("Update failed");
       const { data } = await res.json();
-      console.log("Job updated", data);
+
       updateData(row.index, column.id, value);
     } catch (err) {
       toast.error(err.message);

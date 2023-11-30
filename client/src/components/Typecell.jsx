@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { jobType } from "../utils/constants";
 
 function TypeCell({ getValue, row, column, table }) {
-  const status = getValue();
+  const type = getValue();
   const { updateData } = table.options.meta;
 
   const handleTypeChange = async (newType) => {
@@ -34,7 +34,7 @@ function TypeCell({ getValue, row, column, table }) {
           className="font-[400] border-0 rounded-none
           focus:outline-0 hover:bg-light w-full px-3.5 py-3"
         >
-          {status}
+          {type}
         </MenuButton>
         <MenuList>
           {jobType.map((item, index) => (

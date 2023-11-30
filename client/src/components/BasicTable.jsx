@@ -108,6 +108,7 @@ function BasicTable({ jobs }) {
   );
 
   const [data, setData] = useState(jobs);
+
   const [globalFilter, setGlobalFilter] = useState("");
   const [rowSelection, setRowSelection] = useState({});
   const table = useReactTable({
@@ -138,13 +139,38 @@ function BasicTable({ jobs }) {
     },
   });
 
-  const [filteredData, setFilteredData] = useState(jobs);
+  const [filteredData, setFilteredData] = useState(data);
   useEffect(() => {
     // Update filtered data when global filter changes
     setFilteredData(
       table.getFilteredRowModel().rows.map((row) => row.original)
     );
   }, [globalFilter, table]);
+
+  const handleDeleteRow = async () => {
+    try {
+      const idsToDelete = table
+        .getSelectedRowModel()
+        .rows.map((item) => item.original._id);
+
+      const newData = data.filter((row) => !idsToDelete.includes(row._id));
+
+      const res = await fetch("/api/v1/jobs/delete-multiple", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ids: idsToDelete }),
+      });
+      if (!res.ok) throw new Error("Failed to delete rows");
+      console.log(data);
+      console.log(newData);
+      setData(newData);
+      setRowSelection({});
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className=" mx-auto  overflow-x-scroll">
@@ -164,7 +190,9 @@ function BasicTable({ jobs }) {
         </div>
         <div className="flex items-center  justify-center gap-4">
           {table.getSelectedRowModel().rows.length > 0 && (
-            <Button type="dark">Delete</Button>
+            <Button type="dark" onClick={handleDeleteRow}>
+              Delete
+            </Button>
           )}
           <DownloadButton data={data} fileName={"jobs"} />
           <Button to={"/dashboard"} type="dark">
@@ -223,10 +251,7 @@ function BasicTable({ jobs }) {
         </tbody>
       </table>
       <div className="flex justify-between items-center">
-        <span>
-          {table.getSelectedRowModel().rows.length || 0} selected{" "}
-          {console.log(table.getSelectedRowModel())}{" "}
-        </span>
+        <span>{table.getSelectedRowModel().rows.length || 0} selected </span>
 
         <div className="flex items-center justify-end mt-2 gap-2 flex-wrap">
           <button

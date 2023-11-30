@@ -10,7 +10,7 @@ import EditJob, {
   action as editJobAction,
   loader as editJobLoader,
 } from "./features/job/EditJob";
-import DeleteJob, { action as deleteJobAction } from "./features/job/DeleteJob";
+
 import Stats, { loader as statsLoader } from "./features/stats/Stats";
 
 import Home from "./ui/Home";
@@ -53,11 +53,7 @@ const router = createBrowserRouter([
         loader: editJobLoader,
         action: editJobAction,
       },
-      {
-        path: "delete-job/:id",
-        element: <DeleteJob />,
-        action: deleteJobAction,
-      },
+
       {
         path: "jobs",
         element: <JobList />,

@@ -67,15 +67,25 @@ exports.patchJob = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.deleteJob = catchAsync(async (req, res, next) => {
-  const { id } = req.params;
-  const job = await Job.findByIdAndDelete(id);
+exports.deleteMultipleJobs = catchAsync(async (req, res, next) => {
+  const { ids } = req.body;
+  const jobs = await Job.deleteMany({ _id: { $in: ids } });
 
   res.status(204).json({
     status: "success",
     data: null,
   });
 });
+
+// exports.deleteJob = catchAsync(async (req, res, next) => {
+//   const { id } = req.params;
+//   const job = await Job.findByIdAndDelete(id);
+
+//   res.status(204).json({
+//     status: "success",
+//     data: null,
+//   });
+// });
 
 exports.getMonthlyStats = catchAsync(async (req, res, next) => {
   let stats = await Job.aggregate([
